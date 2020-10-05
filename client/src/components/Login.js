@@ -8,11 +8,11 @@ const Login = (props) => {
   const { handleLogin, setUser, authLoading, authErrors } = useContext(
     AuthContext
   );
-  const email = useFormInput("test@gmail.com", "Email");
+  const email = useFormInput("test@test.com", "Email");
   const password = useFormInput("123456", "Email");
 
   const handleSubmit = async (e) => {
-    e.preventDEfault();
+    e.preventDefault();
     console.log(email.value);
     console.log(password.value);
 

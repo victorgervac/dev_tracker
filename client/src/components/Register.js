@@ -5,9 +5,9 @@ import { AuthContext } from "../providers/AuthProvider";
 import { useHistory } from "react-router-dom";
 
 const Register = (props) => {
-  const email = useFormInput("", "E-mail");
-  const password = useFormInput("", "Password");
-  const passwordConfirmation = useFormInput("", "Password Confirmation");
+  const email = useFormInput("test@test.com", "E-mail");
+  const password = useFormInput("123456", "Password");
+  const passwordConfirmation = useFormInput("123456", "Password Confirmation");
 
   const { handleRegister, authLoading, authErrors } = useContext(AuthContext);
   const history = useHistory();
@@ -37,18 +37,18 @@ const Register = (props) => {
           <Label color="blue" ribbon>
             E-MAIL
           </Label>
-          <Form.Input {...email} />
+          <Form.Input autoFocus {...email} />
         </div>
         <br />
         <Label color="blue" ribbon>
           PASSWORD
         </Label>
-        <Form.Input style={styles.item} {...password} />
+        <Form.Input type="password" style={styles.item} {...password} />
         <br />
         <Label color="blue" ribbon>
           PASSWORD CONFIRMATION
         </Label>
-        <Form.Input {...passwordConfirmation} />
+        <Form.Input type="password" {...passwordConfirmation} />
         <br />
         <Button color="green" type="submit">
           Register
