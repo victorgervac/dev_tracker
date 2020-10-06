@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 2020_10_05_212546) do
     t.index ["job_id"], name: "index_contacts_on_job_id"
   end
 
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "jobs", force: :cascade do |t|
     t.string "company"
     t.string "job_title"
