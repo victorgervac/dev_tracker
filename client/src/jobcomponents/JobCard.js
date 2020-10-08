@@ -1,38 +1,68 @@
-import React, { useState, useEffect}  from "react";
+import React, { useState, useEffect, useContext}  from "react";
 import axios from "axios";
-import { Header, Card} from 'semantic-ui-react';
+import {Card} from 'semantic-ui-react';
+import {AuthContext} from "../providers/AuthProvider";
+import { Link } from "react-router-dom";
 
-const JobCard = (props) => {
-  const [job, setJob] = useState([]);
+
+const JobCard = () => {
+  const [jobs, setJobs] = useState([]);
   
-  const jobs = async (id) => {
-    let res = axios.put(`/api/jobs/${id}`);
-  };
+  const authContext = useContext(AuthContext)
+
+  // const jobs = async (id) => {
+  //   let res = axios.put(`/api/jobs/${id}`);
+  // };
   
+  const getJobs = async () => {
+    try {
+      let res = await axios.get(`/api/users/${authContext.user.id}/jobs`);
+      console.log(res.data.company);
+      setJobs(res.data);
+    } catch (error) {
+      alert("Error getting jobs");
+    }
+  }
+
+  useEffect(() => {
+    getJobs();
+  },[])
   
-  const renderJob = () =>{
-    
-    if (jobs) {
+
+
+  const renderJobs = (status) => {
       return(
-        <div> 
-        {/* {props.job_title} */}
-          <Card key={job.id}>
+        <div>
+         
+        {jobs.filter(j =>j.status == status).map((job) => 
+          <Card key={job.id}  job={job}>
           <Card.Content>
             <Card.Header>
               {job.job_title}
             </Card.Header>
             <Card.Description>{job.company}</Card.Description>
-          </Card.Content>
-          </Card> 
-         </div>
+            <Card.Description>{job.status}</Card.Description>
 
+          </Card.Content>
+          <Link to="api/jobs/${id}" />
+          </Card> 
+          )}
+         </div>
       )
-    }return <Header>No Jobs</Header>
   };
+
+  
 
   return(
     <div>
-      {renderJob()}
+    <div>
+      <h1>rejected</h1>
+      {renderJobs("rejected")}
+    </div>
+    
+    <div>
+      <h1>wishlist</h1>
+      {renderJobs("wishlist")}</div>
     </div>
   );
 };
