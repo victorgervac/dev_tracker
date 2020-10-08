@@ -51,12 +51,22 @@ const Navbar = () => {
   return (
     <div style={styles.navbar}>
       <div>
+        {/* ToDo: remove this! */}
+        <Link style={styles.navtext} to="/jobs/1">
+          Job
+        </Link>
         <Link style={styles.navtext} to="/">
           Home
         </Link>
-        <span style={{ marginRight: "10px" }}></span>
       </div>
-      <div>{getRightNav()}</div>
+      <div>
+        {user && (
+          <Link style={styles.navtext} to="/accountSettings">
+            Settings
+          </Link>
+        )}
+        {getRightNav()}
+      </div>
     </div>
   );
 };

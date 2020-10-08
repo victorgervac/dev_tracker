@@ -8,6 +8,8 @@ const Register = (props) => {
   const email = useFormInput("test@test.com", "E-mail");
   const password = useFormInput("123456", "Password");
   const passwordConfirmation = useFormInput("123456", "Password Confirmation");
+  const firstName = useFormInput("Jerry", "First Name");
+  const lastName = useFormInput("Narly", "Last Name");
 
   const { handleRegister, authLoading, authErrors } = useContext(AuthContext);
   const history = useHistory();
@@ -22,6 +24,8 @@ const Register = (props) => {
           email: email.value,
           password: password.value,
           passwordConfirmation: passwordConfirmation.value,
+          first_name: firstName.value,
+          last_name: lastName.value,
         },
         history
       );
@@ -35,9 +39,17 @@ const Register = (props) => {
       <Form onSubmit={handleSubmit}>
         <div>
           <Label color="blue" ribbon>
+            First Name
+          </Label>
+          <Form.Input autoFocus {...firstName} />
+          <Label color="blue" ribbon>
+            Last Name
+          </Label>
+          <Form.Input {...lastName} />
+          <Label color="blue" ribbon>
             E-MAIL
           </Label>
-          <Form.Input autoFocus {...email} />
+          <Form.Input {...email} />
         </div>
         <br />
         <Label color="blue" ribbon>
