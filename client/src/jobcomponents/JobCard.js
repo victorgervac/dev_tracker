@@ -10,14 +10,11 @@ const JobCard = () => {
   
   const authContext = useContext(AuthContext)
 
-  // const jobs = async (id) => {
-  //   let res = axios.put(`/api/jobs/${id}`);
-  // };
   
   const getJobs = async () => {
     try {
       let res = await axios.get(`/api/users/${authContext.user.id}/jobs`);
-      console.log(res.data.company);
+      console.log(res.data);
       setJobs(res.data);
     } catch (error) {
       alert("Error getting jobs");
@@ -41,10 +38,10 @@ const JobCard = () => {
               {job.job_title}
             </Card.Header>
             <Card.Description>{job.company}</Card.Description>
-            <Card.Description>{job.status}</Card.Description>
-
+            <Link to="/jobs/1">
+            View Details
+            </Link>
           </Card.Content>
-          <Link to="api/jobs/${id}" />
           </Card> 
           )}
          </div>

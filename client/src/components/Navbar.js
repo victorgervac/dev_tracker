@@ -52,9 +52,7 @@ const Navbar = () => {
     <div style={styles.navbar}>
       <div>
         {/* ToDo: remove this! */}
-        <Link style={styles.navtext} to="/jobs/1">
-          Job
-        </Link>
+        
         <Link style={styles.navtext} to="/">
           Home
         </Link>
