@@ -1,7 +1,9 @@
 class Api::JobsController < ApplicationController
-  before_action :authenticate_user!, :set_user, only: [:index]
+  # before_action :authenticate_user!, :set_user, only: [:index]
+
   def index
-    render json: @user.jobs
+    # render json: @user.jobs
+    render json: User.find(1).jobs
   end
 
   def all_job
@@ -18,19 +20,25 @@ class Api::JobsController < ApplicationController
   end
 
   def update
-    job = current_user.jobs.find(params[:id])
-    Job.update(complete: !job.complete)
-    render json: job
+    job = User.find(params[:user_id]).jobs.find(params[:id])
+    # job = current_user.jobs.find(params[:id])
+
+    # job.status
+    if (job.update(job_params))
+      render json: job
+    else
+      render json: job.errors
+    end
   end
 
   def destroy
     Job.find(params[:id]).destroy
-    render json: {message: "Job Deleted"}
+    render json: { message: "Job Deleted" }
   end
 
   # def drag_job
   #   job = Job.find(params[:id])
-  #   if job 
+  #   if job
 
   private
 
