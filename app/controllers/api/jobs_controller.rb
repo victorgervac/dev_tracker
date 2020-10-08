@@ -1,11 +1,15 @@
 class Api::JobsController < ApplicationController
-  before_action :authenticate_user!, :set_user, only: [:index]
+  before_action :authenticate_user!, :set_user, only: [:index, :show]
   def index
     render json: @user.jobs
   end
 
   def all_job
     render json: current_user.job.all
+  end
+
+  def show
+    render json: Job.find(params[:id])
   end
 
   def create
