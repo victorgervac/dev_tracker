@@ -54,9 +54,15 @@ const Navbar = () => {
         <Link style={styles.navtext} to="/">
           Home
         </Link>
-        <span style={{ marginRight: "10px" }}></span>
       </div>
-      <div>{getRightNav()}</div>
+      <div>
+        {user && (
+          <Link style={styles.navtext} to="/AccountSettings">
+            Settings
+          </Link>
+        )}
+        {getRightNav()}
+      </div>
     </div>
   );
 };

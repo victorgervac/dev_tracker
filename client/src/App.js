@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import NoMatch from "./components/NoMatch";
 import JobBoard from "./jobcomponents/JobBoard";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AccountSettings from "./components/AccountSettings";
 
 function App() {
   return (
@@ -19,7 +20,12 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
-          <ProtectedRoute exact path="/JobBoard" component={JobBoard}/>
+          <ProtectedRoute exact path="/JobBoard" component={JobBoard} />
+          <ProtectedRoute
+            exact
+            path="/AccountSettings"
+            component={AccountSettings}
+          />
           <Route component={NoMatch} />
         </Switch>
       </Container>
