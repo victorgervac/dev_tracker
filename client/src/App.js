@@ -10,6 +10,7 @@ import NoMatch from "./components/NoMatch";
 import JobBoard from "./jobcomponents/JobBoard";
 import JobShow from "./components/JobShow";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AccountSettings from "./components/AccountSettings";
 
 function App() {
   return (
@@ -20,7 +21,13 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
-          <ProtectedRoute exact path="/jobboard" component={JobBoard} />
+          <ProtectedRoute exact path="/jobBoard" component={JobBoard} />
+          <ProtectedRoute
+            exact
+            path="/accountSettings"
+            component={AccountSettings}
+          />
+
           <ProtectedRoute exact path="/jobs/1" component={JobShow} />
           <Route component={NoMatch} />
         </Switch>
