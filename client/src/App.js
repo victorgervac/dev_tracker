@@ -7,7 +7,7 @@ import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import NoMatch from "./components/NoMatch";
-import JobBoard from "./jobcomponents/JobBoard";
+import JobBoard from "./board/JobBoard";
 import JobShow from "./components/JobShow";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AccountSettings from "./components/AccountSettings";
@@ -18,7 +18,7 @@ function App() {
       <Container>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={JobBoard} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <ProtectedRoute exact path="/jobBoard" component={JobBoard} />

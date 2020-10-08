@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
-import JobCard from "./JobCard";
+import React from "react";
+import JobCard from "../jobcomponents/JobCard";
 
 const JobBoard = () => {
   return(
