@@ -2,9 +2,6 @@ import React, {useEffect, useContext, useState} from "react";
 import axios from "axios";
 import {AuthContext} from "../providers/AuthProvider";
 
-
-
-
 const JobShow = () => {
 
   const [job, setJob] = useState([]);
@@ -32,17 +29,11 @@ const JobShow = () => {
         <h2>{job.job_title}</h2>
           <h3>{job.salary}</h3>
           <h3>{job.location}</h3>
-          <h3>{job.date_applied}</h3>
+         <h3>{job.date_applied}</h3>
           <h3>{job.description}</h3>
           <h3>{job.status}</h3>
     </div>
   )
 }
-
-
-
-
-
-
 
 export default JobShow;
