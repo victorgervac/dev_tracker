@@ -32,15 +32,10 @@ function App() {
             path="/accountSettings"
             component={AccountSettings}
             />
-<<<<<<< HEAD
-          <ProtectedRoute exact path="/jobs/1" component={JobShow} />
-=======
           <ProtectedRoute exact path ="/userEdit" component={UserForm} />
           <ProtectedRoute exact path ="/addJob" component={JobForm} />
           <ProtectedRoute exact path ="/viewAccount" component={User} />
-
           <ProtectedRoute exact path="/jobs/:id" component={JobShow} />
->>>>>>> master
           <Route component={NoMatch} />
         </Switch>
       </Container>
