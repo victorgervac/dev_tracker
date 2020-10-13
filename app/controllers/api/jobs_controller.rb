@@ -1,5 +1,5 @@
 class Api::JobsController < ApplicationController
-  before_action :authenticate_user!, :set_user, only: [:index, :show]
+  before_action :authenticate_user!, :set_user, only: [:index, :show, :create]
   def index
     render json: @user.jobs
   end

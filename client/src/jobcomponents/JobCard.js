@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext}  from "react";
 import axios from "axios";
-import {Card} from 'semantic-ui-react';
+import {Card, Button, Icon} from 'semantic-ui-react';
 import {AuthContext} from "../providers/AuthProvider";
 import { Link } from "react-router-dom";
 
@@ -60,6 +60,12 @@ const JobCard = () => {
     <div>
       <h1>wishlist</h1>
       {renderJobs("wishlist")}</div>
+      <Link to="/addJob">
+        <Button >
+          <Icon name="add" size="massive"/>
+            <p>Add Job</p>
+        </Button>
+      </Link>
     </div>
   );
 };

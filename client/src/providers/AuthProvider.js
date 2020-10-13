@@ -51,6 +51,17 @@ const AuthProvider = (props) => {
       alert("Error: failed to log out");
     }
   };
+  const handleUpdate = async (user, history) =>{
+    try {
+      let res = await Axios.get("/api/auth/edit")
+      console.log(res.data.data)
+      setUser(res.data.data)
+      history.push("/")
+    }catch(err){
+      alert("can not update user")
+    }
+
+  };
 
   return (
     <AuthContext.Provider
@@ -63,6 +74,7 @@ const AuthProvider = (props) => {
         handleRegister,
         handleLogin,
         handleLogout,
+        handleUpdate
       }}
     >
       {props.children}
