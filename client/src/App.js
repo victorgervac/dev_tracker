@@ -29,7 +29,6 @@ function App() {
             path="/accountSettings"
             component={AccountSettings}
             />
-
           <ProtectedRoute exact path="/jobs/1" component={JobShow} />
           <Route component={NoMatch} />
         </Switch>
