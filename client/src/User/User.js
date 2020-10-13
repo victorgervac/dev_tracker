@@ -1,29 +1,31 @@
 import Axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
-import { Button, Card, Form } from "semantic-ui-react";
+import { Button, List } from "semantic-ui-react";
 import { AuthContext } from "../providers/AuthProvider";
+import UserForm  from "./UserForm"
 
 const User = (props) => {
   const { user } = useContext(AuthContext);
+  const [showForm, setShowForm] = useState(false)
 
   const renderUsers = () => {
     return (
-      <div>
-        <Card>
-          <div class="header">Account Settings</div>
-          <div class="description">{user.first_name}</div>
-          <div class="description">{user.last_name}</div>
-          <div class="description">{user.email}</div>
-          <div>
-            <Button color="green">Update</Button>
-          </div>
-        </Card>
-      </div>
+      <>
+          <List.Header>Account Settings</List.Header>
+          <List.Description>Name:{user.first_name} {user.last_name}</List.Description>
+          {/* <div class="description">{user.last_name}</div> */}
+          <List.Description>E-mail:{user.email}</List.Description>     
+       
+      </>
     );
   };
-
+  
   return (
     <div>
+      {showForm && <UserForm />}
+    <Button onClick={()=> setShowForm(!showForm)} color="green"> 
+    {showForm ? "Close Form" : "Show Form" }
+    </Button>
       <h1>{renderUsers()}</h1>
     </div>
   );

@@ -11,10 +11,12 @@ import JobBoard from "./board/JobBoard";
 import JobShow from "./components/JobShow";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AccountSettings from "./components/AccountSettings";
+import FetchUser from "./components/FetchUser";
 
 function App() {
   return (
     <>
+    <FetchUser>
       <Container>
         <Navbar />
         <Switch>
@@ -31,7 +33,9 @@ function App() {
           <Route component={NoMatch} />
         </Switch>
       </Container>
+    </FetchUser>
     </>
+            
   );
 }
 
