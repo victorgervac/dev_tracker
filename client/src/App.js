@@ -27,8 +27,7 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <ProtectedRoute exact path="/jobBoard" component={JobBoard} />
-          <ProtectedRoute
-            exact
+          <ProtectedRoute exact
             path="/accountSettings"
             component={AccountSettings}
             />

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import JobCard from "../jobcomponents/JobCard";
-import Board from './Board';
+// import Board from './Board';
 import axios from "axios";
 
 const boards = [
@@ -47,20 +47,20 @@ const JobBoard = () => {
     ]);
   };
 
-  return(
-    <div>
-      {boards.map(board => (
-        <Board
-          key={board.state}
-          {...board}
-          afterDropHandler={setState}
-          // cards={cards.filter((card) => card.state === board.state)}
-          cards={cards.filter((card) => card.state === board.state)}
-        />
-      ))}
-      {/* <JobCard /> */}
-    </div>
-  )
+  // return(
+  //   <div>
+  //     {boards.map(board => (
+  //       <Board
+  //         key={board.state}
+  //         {...board}
+  //         afterDropHandler={setState}
+  //         // cards={cards.filter((card) => card.state === board.state)}
+  //         cards={cards.filter((card) => card.state === board.state)}
+  //       />
+  //     ))}
+  //     {/* <JobCard /> */}
+  //   </div>
+  // )
 }
 
 export default JobBoard;

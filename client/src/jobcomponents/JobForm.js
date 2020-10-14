@@ -3,58 +3,89 @@ import {Form, Button} from "semantic-ui-react";
 import AuthContext from "../providers/AuthProvider";
 import axios from "axios";
 
-const JobForm = (history) => {
+const JobForm = ({job, ...props}) => {
   const [company, setCompany] = useState("");  
   const authContext = useContext(AuthContext)
-
+  
+  const [ formValues, setFormValues ] = useState({
+    company: job.company || "",
+    job_title: job.job_title || "",
+    salary: job.salary || "",
+    location: job.location || "",
+    date_applied: new Date(job.date_applied) || "",
+    description: job.description || "",
+    status: job.status || "",
+  })
 
 
   function handleSubmit(e) {
     e.preventDefault();
     axios
-      .post(`/api/users/${user_id}/jobs`, { company })
+      // .post(`/api/users/${user_id}/jobs`, { company })
       .then((res) => {
       debugger;
-      history.push("/jobBoard");
+      props.history.push("/jobBoard");
       })
       .catch((err) => {
         alert("create product broke");
       });
   }
   
+  const handleChange = (e) => {
+    setFormValues({...formValues, [e.target.name]: e.target.value})
+  }
+
   return(
     <Form onSubmit={handleSubmit}>
       <Form.Input
-          label="Company"
-          placeholder="Company"
-          value={company}
-          onChange={(e) => setCompany(e.target.value)}
-          required
-        />
-      {/* <Form.Field>
-      <label>Job Title</label>
-      <input placeholder='Job Title' />
-      </Form.Field>
-      <Form.Field>
-      <label>Salary</label>
-      <input placeholder='Salary' />
-      </Form.Field>
-      <Form.Field>
-      <label>Location</label>
-      <input placeholder='Location' />
-      </Form.Field>
-      <Form.Field>
-      <label>Date Applied</label>
-      <input placeholder='Date Applied' />
-      </Form.Field>
-      <Form.Field>
-      <label>Description</label>
-      <input placeholder='Description' />
-      </Form.Field>
-      <Form.Field>
-      <label>Status</label>
-      <input placeholder='Status' />
-      </Form.Field> */}
+        name="company"
+        label="Company"
+        placeholder="Company"
+        value={formValues.company}
+        onChange={handleChange}
+        required
+      />
+      <Form.Input
+        name="job_title"
+        label="Job Title"
+        placeholder="Job Title"
+        value={formValues.job_title}
+        onChange={handleChange}
+        required
+      />
+      <Form.Input
+        name="salary"
+        label="Salary"
+        placeholder="Salary"
+        value={formValues.salary}
+        onChange={handleChange}
+        required
+      />
+      <Form.Input
+        name="location"
+        label="Location"
+        placeholder="Location"
+        value={formValues.location}
+        onChange={handleChange}
+        required
+      />
+      <Form.Input
+        name="date_applied"
+        label="Date Applied"
+        placeholder="Date Applied"
+        value={formValues.date_applied}
+        type="date"
+        onChange={handleChange}
+        required
+      />
+      <Form.Input
+        name="description"
+        label="Description"
+        placeholder="Description"
+        value={formValues.description}
+        onChange={handleChange}
+        required
+      />
       <Button type='submit'>Submit</Button>
     </Form>
   )
