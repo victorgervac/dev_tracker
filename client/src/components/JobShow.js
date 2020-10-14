@@ -1,6 +1,10 @@
 import React, {useEffect, useContext, useState} from "react";
 import axios from "axios";
 import {AuthContext} from "../providers/AuthProvider";
+<<<<<<< HEAD
+=======
+import {Link} from "react-router-dom"
+>>>>>>> adf595630dcdf2094bd1e8d635cb60ae6802844b
 
 const JobShow = () => {
 
@@ -32,7 +36,13 @@ const JobShow = () => {
          <h3>{job.date_applied}</h3>
           <h3>{job.description}</h3>
           <h3>{job.status}</h3>
+      <Link to="/jobShowEdit">
+        <Button >
+            <p>Edit  Info</p>
+        </Button>
+      </Link>
     </div>
+
   )
 }
 
