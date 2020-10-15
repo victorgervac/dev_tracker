@@ -12,7 +12,6 @@ import JobShow from "./components/JobShow";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AccountSettings from "./components/AccountSettings";
 import FetchUser from "./components/FetchUser";
-import UserForm from "./User/UserForm";
 import JobForm from "./jobcomponents/JobForm";
 import User from "./User/User";
 
@@ -30,7 +29,6 @@ function App() {
             path="/accountSettings"
             component={AccountSettings}
             />
-          <ProtectedRoute exact path ="/userEdit" component={UserForm} />
           <ProtectedRoute exact path ="/addJob" component={JobForm} />
           <ProtectedRoute exact path ="/viewAccount" component={User} />
           <ProtectedRoute exact path="/jobs/:id" component={JobShow} />

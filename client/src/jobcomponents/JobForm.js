@@ -1,7 +1,7 @@
-// import React, {useState, useContext} from "react";
-// import {Form, Button} from "semantic-ui-react";
-// import AuthContext from "../providers/AuthProvider";
-// import axios from "axios";
+import React, {useState, useContext} from "react";
+import {Form, Button} from "semantic-ui-react";
+import AuthContext from "../providers/AuthProvider";
+import axios from "axios";
 
 const JobForm = ({job, ...props}) => {
   const [company, setCompany] = useState("");  
@@ -91,4 +91,4 @@ const JobForm = ({job, ...props}) => {
   )
 };
 
-// export default JobForm;
+ export default JobForm;
