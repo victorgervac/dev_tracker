@@ -1,36 +1,36 @@
-import React, {useState, useContext} from "react";
-import {Form, Button} from "semantic-ui-react";
-import AuthContext from "../providers/AuthProvider";
-import axios from "axios";
+// import React, {useState, useContext} from "react";
+// import {Form, Button} from "semantic-ui-react";
+// import AuthContext from "../providers/AuthProvider";
+// import axios from "axios";
 
-const JobForm = (history) => {
-  const [company, setCompany] = useState("");  
-  const authContext = useContext(AuthContext)
+// const JobForm = (history) => {
+//   const [company, setCompany] = useState("");  
+//   const authContext = useContext(AuthContext)
 
 
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    axios
-      .post(`/api/users/${user_id}/jobs`, { company })
-      .then((res) => {
-      debugger;
-      history.push("/jobBoard");
-      })
-      .catch((err) => {
-        alert("create product broke");
-      });
-  }
+//   function handleSubmit(e) {
+//     e.preventDefault();
+//     axios
+//       .post(`/api/users/${user_id}/jobs`, { company })
+//       .then((res) => {
+//       debugger;
+//       history.push("/jobBoard");
+//       })
+//       .catch((err) => {
+//         alert("create product broke");
+//       });
+//   }
   
-  return(
-    <Form onSubmit={handleSubmit}>
-      <Form.Input
-          label="Company"
-          placeholder="Company"
-          value={company}
-          onChange={(e) => setCompany(e.target.value)}
-          required
-        />
+//   return(
+//     <Form onSubmit={handleSubmit}>
+//       <Form.Input
+//           label="Company"
+//           placeholder="Company"
+//           value={company}
+//           onChange={(e) => setCompany(e.target.value)}
+//           required
+//         />
       {/* <Form.Field>
       <label>Job Title</label>
       <input placeholder='Job Title' />
@@ -55,9 +55,9 @@ const JobForm = (history) => {
       <label>Status</label>
       <input placeholder='Status' />
       </Form.Field> */}
-      <Button type='submit'>Submit</Button>
-    </Form>
-  )
-};
+//       <Button type='submit'>Submit</Button>
+//     </Form>
+//   )
+// };
 
-export default JobForm;
+// export default JobForm;

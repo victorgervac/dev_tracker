@@ -2,6 +2,7 @@ import React, {useEffect, useContext, useState} from "react";
 import axios from "axios";
 import {AuthContext} from "../providers/AuthProvider";
 import {Link} from "react-router-dom"
+import { Button } from "semantic-ui-react";
 
 const JobShow = () => {
 
@@ -34,7 +35,7 @@ const JobShow = () => {
           <h3>{job.description}</h3>
           <h3>{job.status}</h3>
       <Link to="/jobShowEdit">
-        <Button >
+        <Button>
             <p>Edit  Info</p>
         </Button>
       </Link>
