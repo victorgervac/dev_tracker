@@ -3,7 +3,7 @@ import { Redirect, Route } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 
 //... rest as rest of prop
-const ProtecedRoute = ({ component: Component, ...rest }) => {
+const ProtectedRoute = ({ component: Component, ...rest }) => {
   const { authenticated } = useContext(AuthContext);
   return (
     <Route
@@ -15,4 +15,4 @@ const ProtecedRoute = ({ component: Component, ...rest }) => {
   );
 };
 
-export default ProtecedRoute;
+export default ProtectedRoute;
