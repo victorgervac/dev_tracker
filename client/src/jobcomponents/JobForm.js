@@ -1,34 +1,86 @@
 import React, {useState, useContext} from "react";
 import {Form, Button} from "semantic-ui-react";
-import AuthContext from "../providers/AuthProvider";
+import {AuthContext} from "../providers/AuthProvider";
 import axios from "axios";
 
-const JobForm = ({job, ...props}) => {
-  const [company, setCompany] = useState("");  
+const JobForm = ({job, user, ...props}) => {
   const authContext = useContext(AuthContext)
   
+  function formatDate(date) {
+    var d = new Date(date),
+    month = '' + (d.getMonth() + 1),
+    day = '' + d.getDate(),
+    year = d.getFullYear();
+    
+    if (month.length < 2) 
+    month = '0' + month;
+    if (day.length < 2) 
+    day = '0' + day;
+    
+    return [year, month, day].join('-');
+  }
+
+
+
   const [ formValues, setFormValues ] = useState({
     company: job.company || "",
     job_title: job.job_title || "",
     salary: job.salary || "",
     location: job.location || "",
-    date_applied: new Date(job.date_applied) || "",
+    date_applied: formatDate(job.date_applied) || "",
     description: job.description || "",
     status: job.status || "",
   })
 
+  
+  // let datefix = formatDate(job.date_applied)
+  // console.log("date: ", datefix)
+
+  async function addJob() {
+    try {
+      let res = await axios.post(`/api/users/${authContext.user.id}/jobs`, {
+        company: formValues.company,
+        job_title: formValues.job_title,
+        salary: formValues.salary,
+        location: formValues.location,
+        date_applied: formValues.date_applied,
+        description: formValues.description,
+        status: formValues.status,
+      });
+      props.history.push(`/`);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  function editJob() {
+    axios
+      .put(`/api/users/${authContext.user.id}/jobs/${job.id}`, { 
+        company: formValues.company,
+        job_title: formValues.job_title,
+        salary: formValues.salary,
+        location: formValues.location,
+        date_applied: formValues.date_applied,
+        //may have to create new Date(formValues.date_applied)
+        description: formValues.description,
+        status: formValues.status,
+      })
+      .then((res) => {
+        props.handleUpdate(formValues)
+      })
+      .catch((err) => {
+        alert("error in update");
+      });
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
-    axios
-      // .post(`/api/users/${user_id}/jobs`, { company })
-      .then((res) => {
-      debugger;
-      props.history.push("/jobBoard");
-      })
-      .catch((err) => {
-        alert("create product broke");
-      });
+
+    if (job.id) {
+      editJob();
+    } else {
+      addJob();
+    }
   }
   
   const handleChange = (e) => {

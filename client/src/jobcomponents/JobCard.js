@@ -38,7 +38,7 @@ const JobCard = () => {
               {job.job_title}
             </Card.Header>
             <Card.Description>{job.company}</Card.Description>
-            <Link to="/jobs/1">
+            <Link to="/jobShow">
             View Details
             </Link>
           </Card.Content>
