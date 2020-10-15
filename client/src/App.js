@@ -23,12 +23,10 @@ function App() {
       <Container>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={JobBoard} />
+          <ProtectedRoute exact path="/" component={JobBoard} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
-          <ProtectedRoute exact path="/jobBoard" component={JobBoard} />
-          <ProtectedRoute
-            exact
+          <ProtectedRoute exact
             path="/accountSettings"
             component={AccountSettings}
             />

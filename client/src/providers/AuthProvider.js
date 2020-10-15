@@ -17,7 +17,7 @@ const AuthProvider = (props) => {
 
       let res = await Axios.post("/api/auth", user);
       setUser(res.data.data);
-      history.push("/jobBoard");
+      history.push("/");
     } catch (err) {
       setAuthErrors(err);
       alert("Error: failed to register");
@@ -33,7 +33,7 @@ const AuthProvider = (props) => {
 
       let res = await Axios.post("/api/auth/sign_in", user);
       setUser(res.data.data);
-      history.push("/jobBoard");
+      history.push("/");
     } catch (err) {
       setAuthErrors(err.response.data.errors);
       alert("Error: failed to log in");

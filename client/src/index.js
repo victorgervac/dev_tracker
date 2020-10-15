@@ -7,6 +7,7 @@ import * as serviceWorker from "./serviceWorker";
 import "semantic-ui-css/semantic.min.css";
 import AuthProvider from "./providers/AuthProvider";
 import { initMiddleware } from "devise-axios";
+import "bulma/css/bulma.css";
 
 initMiddleware();
 

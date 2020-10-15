@@ -58,11 +58,17 @@ const Navbar = () => {
         </Link>
       </div>
       <div>
-        {user && (
-          <Link style={styles.navtext} to="/accountSettings">
-            Settings
-          </Link>
-        )}
+        {user && 
+          <>
+            <Link style={styles.navtext} to="/accountSettings">
+              Settings
+            </Link>
+          
+            <Link styles={styles.navtext} to="/login">
+              Logout
+            </Link>
+          </>
+        }
         {getRightNav()}
       </div>
     </div>
