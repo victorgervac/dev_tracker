@@ -1,12 +1,12 @@
 import React, {useEffect, useContext, useState} from "react";
 import axios from "axios";
 import {AuthContext} from "../providers/AuthProvider";
-import {Link} from "react-router-dom"
+import {Button} from "semantic-ui-react";
+import JobForm from '../jobcomponents/JobForm';
 
 const JobShow = () => {
-
   const [job, setJob] = useState([]);
-
+  const [ editing, setEditing ] = useState(false);
   const authContext = useContext(AuthContext)
 
   const getJob = async () => {
@@ -30,23 +30,19 @@ const JobShow = () => {
         <h2>{job.job_title}</h2>
           <h3>{job.salary}</h3>
           <h3>{job.location}</h3>
-          <h3>{job.date_applied}</h3>
+          <h3>{new Date(job.date_applied).toLocaleDateString()}</h3>
           <h3>{job.description}</h3>
           <h3>{job.status}</h3>
-      <Link to="/jobShowEdit">
-        <Button >
+
+
+        <Button onClick={()=>setEditing(!editing)}>
             <p>Edit  Info</p>
         </Button>
-      </Link>
-    </div>
+
+        { editing && <JobForm job={job}/>  }
+      </div>
 
   )
 }
-
-
-
-
-
-
 
 export default JobShow;
