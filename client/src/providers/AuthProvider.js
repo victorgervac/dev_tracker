@@ -51,23 +51,39 @@ const AuthProvider = (props) => {
       alert("Error: failed to log out");
     }
   };
-  const handleUpdate = async (id,user,history) =>{
-    // try {
-    //   let res = await Axios.put(`/api/users/${id}`,user)
-    //   console.log(res.data.data)
-    //   setUser(res.data.data)
-    //   history.push("/accountSettings")
-    // }catch(err){
-    //   alert("can not update user")
-    // }
+  const handleUpdate = async (id,user,history,password) =>{
     Axios.put(`/api/users/${id}`,user)
       .then(res=> {
         setUser(res.data)
+        console.log("data:",res.data)
         history.push("/accountSettings")
       })
-      .catch(console.log)
-
-  };
+      .catch(err=>{
+        alert("cant update")
+      })
+    };
+      // const update = () => {
+      //   Axios.put("/api/auth/password", {
+      //     password_confirmation: "6543210",
+      //     password: "6543210",
+      //   })
+      //     .then((res) => {
+      //       // dostuff
+      //     })
+      //     .catch((err) => {
+      //       // dostuff
+      //     });
+      //   Axios.put("/api/auth", {
+      //     email: "xxtest34@test.com",
+      //   })
+      //     .then((res) => {
+      //       // dostuff
+      //     })
+      //     .catch((err) => {
+      //       // dostuff
+      //     });
+      // };
+  
 
   return (
     <AuthContext.Provider

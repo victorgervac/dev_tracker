@@ -22,9 +22,9 @@ class Api::JobsController < ApplicationController
   end
 
   def update
-    # job = current_user.jobs.find(params[:id])
-    # Job.update(complete: !job.complete)
-    # render json: job
+    job = current_user.jobs.find(params[:id])
+    Job.update(complete: !job.complete)
+    render json: job
   end
 
   def destroy

@@ -18,10 +18,9 @@ const User = (props) => {
   })
 
   console.log("formValues: ",formValues)
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    
     handleUpdate(
       (user.id),
       {...formValues},
@@ -30,7 +29,7 @@ const User = (props) => {
         // first_name: firstName.value, 
         // last_name: lastName.value,
        
-      history 
+    history
     )
   }
 
@@ -78,7 +77,7 @@ const User = (props) => {
               label="Password"
               placeholder="Password"
               name="password"
-              required
+              //required
               onChange={handleChange}
               value={formValues.password}
             />
