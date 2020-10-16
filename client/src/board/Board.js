@@ -1,7 +1,9 @@
 import React from "react"
 import "./board.css";
+import {Button, Icon} from "semantic-ui-react"
 import useBoard from "./useBoard"
 import DraggableCard from "./DraggableCard";
+import {Link} from "react-router-dom";
 
 export default (props) => {
   const { isActive, drop, collapsed, setCollapsed } = useBoard(props);
@@ -12,7 +14,11 @@ export default (props) => {
       ref={drop}
       style={{ opacity: isActive ? 0.5 : 1, backgroundColor: "#FAF9FF" }}
     >
+
       <div className="tile is-child">
+      <Link to="/addJob">
+        <Button as="submit" style={{width:"100%"}}><Icon name="add"/></Button>
+      </Link>
         <article
           className={`panel is-${props.color} ${
             isActive ? "has-background-" + props.color : ""
