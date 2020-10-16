@@ -30,17 +30,23 @@ const JobShow = ({match}) => {
     setJob({...updatedJob})
     setEditing(false);
   }
+  const jobInfo = () => {
+    return (
+      <div>
+        <h1>{job.company}</h1>
+          <h2>{job.job_title}</h2>
+            <h3>{job.salary}</h3>
+            <h3>{job.location}</h3>
+            <h3>{new Date(job.date_applied).toDateString()}</h3>
+            <h3>{job.description}</h3>
+            <h3>{job.status}</h3>
+      </div>
+    )
+  }
 
   return(
     <div>
-      <h1>{job.company}</h1>
-        <h2>{job.job_title}</h2>
-          <h3>{job.salary}</h3>
-          <h3>{job.location}</h3>
-          <h3>{new Date(job.date_applied).toDateString()}</h3>
-          <h3>{job.description}</h3>
-          <h3>{job.status}</h3>
-
+        {!editing && jobInfo()}
 
         <Button onClick={()=>setEditing(!editing)}>
             <p>Edit  Info</p>

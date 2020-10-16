@@ -3,7 +3,7 @@ import {Form, Button} from "semantic-ui-react";
 import {AuthContext} from "../providers/AuthProvider";
 import axios from "axios";
 
-const JobForm = ({job, user, ...props}) => {
+const JobForm = ({job={}, ...props}) => {
   const authContext = useContext(AuthContext)
   
   function formatDate(date) {

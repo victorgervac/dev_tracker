@@ -52,21 +52,14 @@ const AuthProvider = (props) => {
     }
   };
   const handleUpdate = async (id,user,history) =>{
-    // try {
-    //   let res = await Axios.put(`/api/users/${id}`,user)
-    //   console.log(res.data.data)
-    //   setUser(res.data.data)
-    //   history.push("/accountSettings")
-    // }catch(err){
-    //   alert("can not update user")
-    // }
     Axios.put(`/api/users/${id}`,user)
       .then(res=> {
         setUser(res.data)
         history.push("/accountSettings")
       })
-      .catch(console.log)
-
+      .catch(err => {
+        alert("error")
+      })
   };
 
   return (

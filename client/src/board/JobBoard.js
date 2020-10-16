@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-
+import {Button} from "semantic-ui-react"
 import JobCard from "../jobcomponents/JobCard";
 import Board from './Board';
 import axios from "axios";
@@ -9,22 +9,23 @@ import styled from "styled-components";
 
 
 const boards = [
+  { state: "wishlist",
+    title: "Wishlist",
+  },
   { state: "applied",
     title: "Applied",
+  },
+  { state: "interviewed",
+    title: "Interviewed",
   },
   { state: "offered",
     title: "Offered",
   },
-  { state: "interviewed",
-  title: "Interviewed",
-  },
   { state: "rejected",
-  title: "Rejected",
+    title: "Rejected",
   },
-  { state: "wishlist",
-  title: "Wishlist",
-  }
 ]
+
 
 const JobBoard = () => {
   const [cards, setCards] = useState([]);
