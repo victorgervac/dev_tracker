@@ -1,11 +1,11 @@
 import React from "react";
 import {useHistory} from "react-router-dom";
 
-const Card = ({opacity=1, job_title, company}) => {
+const Card = ({opacity=1, job_title, company, id}) => {
   const history = useHistory();
   const navigate = () => {
     console.log("navigate")
-    history.push("/jobs/1")
+    history.push(`/jobs/${id}`)
   }
   return (
     <div onClick={navigate} className="card" style={{

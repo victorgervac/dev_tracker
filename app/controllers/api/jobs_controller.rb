@@ -1,5 +1,5 @@
 class Api::JobsController < ApplicationController
-  before_action :authenticate_user!, :set_user, only: [:index, :show, :create]
+  before_action :authenticate_user!, :set_user, only: [:index, :show, :create, :update]
   def index
     render json: @user.jobs
   end
@@ -23,8 +23,11 @@ class Api::JobsController < ApplicationController
 
   def update
     job = current_user.jobs.find(params[:id])
-    Job.update(complete: !job.complete)
-    render json: job
+    if(job.update(job_params))
+      render json: job
+    else
+      render json: {error:job.errors}, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -39,7 +42,7 @@ class Api::JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:company, :job_title, :salary, :location, :date_applied, :status)
+    params.require(:job).permit(:company, :job_title, :salary, :location, :date_applied, :status, :description)
   end
 
   def set_user
