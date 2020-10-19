@@ -3,13 +3,14 @@ import axios from "axios";
 import {AuthContext} from "../providers/AuthProvider";
 import {Button} from "semantic-ui-react";
 import JobForm from '../jobcomponents/JobForm';
+import Notes from "../jobcomponents/Notes";
 
 const JobShow = ({match}) => {
-  const [job, setJob] = useState([]);
+  const [job, setJob] = useState(null);
   const [ editing, setEditing ] = useState(false);
   const authContext = useContext(AuthContext)
-  console.log(authContext);
   const id = match.params.id
+  //console.log(authContext);
 
   const getJob = async (job) => {
     try {
@@ -30,6 +31,7 @@ const JobShow = ({match}) => {
     setJob({...updatedJob})
     setEditing(false);
   }
+
   const jobInfo = () => {
     return (
       <div>
@@ -46,15 +48,14 @@ const JobShow = ({match}) => {
 
   return(
     <div>
-        {!editing && jobInfo()}
-
+      {job && !editing && jobInfo()}
         <Button onClick={()=>setEditing(!editing)}>
             <p>Edit  Info</p>
         </Button>
-
         { editing && <JobForm job={job} handleUpdate={handleUpdate}/>  }
+        {job && <Notes job={job}/>}
+    
       </div>
-
   )
 }
 
