@@ -11,7 +11,7 @@ class Api::NotesController < ApplicationController
 
 
   def create 
-    note = @job.note.new(note_params)
+    note = @job.notes.new(note_params)
     if (note.save)
       render json: note
     else
@@ -20,10 +20,12 @@ class Api::NotesController < ApplicationController
   end
 
   def update
-    if(@note.update(note_params))
+    note = @job.notes.find(params[:id])
+
+    if(note.update(note_params))
       render json: note
     else
-      render json: {error:note.errors}, status: :unprocessable_entity
+      render json: {error: note.errors}, status: :unprocessable_entity
     end
   end
 
@@ -39,7 +41,7 @@ class Api::NotesController < ApplicationController
   end
 
   def set_note
-    @note = @job.note.find(params[:id])
+    @note = @job.notes.find(params[:id])
   end
 
   # def job_params
