@@ -33,7 +33,6 @@ const Notes =(props)=>{
     }
 
   const addNote = (newNote) => {
-    // console.log("incoming note: ", newNote)
     setNotes([newNote, ...notes])
     setAdding(false)
   }
@@ -50,7 +49,6 @@ const Notes =(props)=>{
   return (
     <div>
       <h1>Notes</h1>
-
       <Button color="green" onClick={handleClick}>
         <span>Add Note</span>
       </Button>
