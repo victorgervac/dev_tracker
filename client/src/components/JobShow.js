@@ -6,8 +6,8 @@ import JobForm from '../jobcomponents/JobForm';
 import Notes from "../jobcomponents/Notes";
 import Contacts from "../Contact/Contacts";
 
-const JobShow = ({match, ...props}) => {
-  const [job, setJob] = useState([]);
+const JobShow = ({match}) => {
+  const [job, setJob] = useState(null);
   const [ editing, setEditing ] = useState(false);
   const authContext = useContext(AuthContext)
   const id = match.params.id
@@ -59,15 +59,15 @@ const JobShow = ({match, ...props}) => {
       </div>
     )
   }
-
+  if (!job){
+    return <p>loading</p>
+  }
   return(
     <div>
         {!editing && jobInfo()}
-
-        { editing && <JobForm job={job} handleUpdate={handleUpdate}/>  }
-        {job && <Notes job={job}/>}
-
-       {job && <Contacts job={job}/>}
+        {editing && <JobForm job={job} handleUpdate={handleUpdate}/>  }
+        {<Notes job={job}/>}
+        {<Contacts job={job}/>}
     
       </div>
   )

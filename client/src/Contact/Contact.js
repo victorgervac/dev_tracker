@@ -17,7 +17,6 @@ const Contact =(props)=>{
              <ContactForm editContact={props.editContact} setEditing={setEditing} contact={props.contact} job={props.job}/>
             :
                 <div>
-                    <h1>Contact</h1>
                     <div class="ui card">
                     <div class="content">{props.contact.first_name}</div>
                     <div class="content">{props.contact.last_name}</div>
