@@ -14,6 +14,7 @@ import AccountSettings from "./components/AccountSettings";
 import FetchUser from "./components/FetchUser";
 import JobForm from "./jobcomponents/JobForm";
 import User from "./User/User";
+import NotesForm from "./jobcomponents/NotesForm";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <ProtectedRoute exact path ="/addJob" component={JobForm} />
           <ProtectedRoute exact path ="/viewAccount" component={User} />
           <ProtectedRoute exact path="/jobs/:id" component={JobShow} />
+          <ProtectedRoute exact path ="/addNotes" component={NotesForm}/>
           <Route component={NoMatch} />
         </Switch>
       </Container>

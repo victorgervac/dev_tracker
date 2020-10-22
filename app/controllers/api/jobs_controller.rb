@@ -1,5 +1,5 @@
 class Api::JobsController < ApplicationController
-  before_action :authenticate_user!, :set_user, only: [:index, :show, :create, :update]
+  before_action :authenticate_user!, :set_user, only: [:index, :show, :create, :update, :destroy]
   def index
     render json: @user.jobs
   end
@@ -31,13 +31,10 @@ class Api::JobsController < ApplicationController
   end
 
   def destroy
-    Job.find(params[:id]).destroy
+    job = current_user.jobs.find(params[:id])
+    job.destroy
     render json: {message: "Job Deleted"}
   end
-
-  # def drag_job
-  #   job = Job.find(params[:id])
-  #   if job 
 
   private
 

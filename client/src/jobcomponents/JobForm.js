@@ -1,44 +1,24 @@
 import React, {useState, useContext} from "react";
-import {Form, Button} from "semantic-ui-react";
+import {Form, Button, Dropdown} from "semantic-ui-react";
 import {AuthContext} from "../providers/AuthProvider";
 import axios from "axios";
 
-const JobForm = ({job={}, ...props}) => {
+const JobForm = ({job={}, location={}, ...props}) => {
+  const { status } = location.state || ""
   const authContext = useContext(AuthContext)
   
-  function formatDate(date) {
-    var d = new Date(date),
-    month = '' + (d.getMonth() + 1),
-    day = '' + d.getDate(),
-    year = d.getFullYear();
-    
-    if (month.length < 2) 
-    month = '0' + month;
-    if (day.length < 2) 
-    day = '0' + day;
-    
-    return [year, month, day].join('-');
-  }
-
-
-
   const [ formValues, setFormValues ] = useState({
     company: job.company || "",
     job_title: job.job_title || "",
     salary: job.salary || "",
     location: job.location || "",
-    date_applied: formatDate(job.date_applied) || "",
+    date_applied: job.date_applied || "",
     description: job.description || "",
-    status: job.status || "",
+    status: job.status || status,
   })
 
-  
-  // let datefix = formatDate(job.date_applied)
-  // console.log("date: ", datefix)
-
-  async function addJob() {
-    try {
-      let res = await axios.post(`/api/users/${authContext.user.id}/jobs`, {
+  function addJob() {
+    axios.post(`/api/users/${authContext.user.id}/jobs`, {
         company: formValues.company,
         job_title: formValues.job_title,
         salary: formValues.salary,
@@ -46,12 +26,13 @@ const JobForm = ({job={}, ...props}) => {
         date_applied: formValues.date_applied,
         description: formValues.description,
         status: formValues.status,
-      });
-      props.history.push(`/`);
-    } catch (err) {
-      console.log(err);
+      })
+      .then((res) => {
+        props.history.push(`/`)
+
+      })
+      .catch(console.log)
     }
-  }
 
   function editJob() {
     axios
@@ -61,7 +42,6 @@ const JobForm = ({job={}, ...props}) => {
         salary: formValues.salary,
         location: formValues.location,
         date_applied: formValues.date_applied,
-        //may have to create new Date(formValues.date_applied)
         description: formValues.description,
         status: formValues.status,
       })
@@ -87,8 +67,40 @@ const JobForm = ({job={}, ...props}) => {
     setFormValues({...formValues, [e.target.name]: e.target.value})
   }
 
+  const handleDrop = (e, data) => {
+    setFormValues({...formValues, status: data.value})
+  }
+
+  const statusOptions = [
+    {
+      key: 'wishlist',
+      text: 'wishlist',
+      value: 'wishlist',
+    },
+    {
+      key: 'applied',
+      text: 'applied',
+      value: 'applied',
+    },
+    {
+      key: 'interviewed',
+      text: 'interviewed',
+      value: 'interviewed',
+    },
+    {
+      key: 'offered',
+      text: 'offered',
+      value: 'offered',
+    },
+    {
+      key: 'rejected',
+      text: 'rejected',
+      value: 'rejected',
+    }
+  ]
+
   return(
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} status={status}>
       <Form.Input
         name="company"
         label="Company"
@@ -137,6 +149,15 @@ const JobForm = ({job={}, ...props}) => {
         value={formValues.description}
         onChange={handleChange}
         required
+      />
+      <Form.Select
+      placeholder='Select Status'
+      label="Status"
+      fluid
+      selection
+      defaultValue={formValues.status}
+      options={statusOptions}
+      onChange={handleDrop}
       />
       <Button type='submit'>Submit</Button>
     </Form>
