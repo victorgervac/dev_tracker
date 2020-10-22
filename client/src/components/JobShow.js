@@ -6,7 +6,7 @@ import JobForm from '../jobcomponents/JobForm';
 import Notes from "../jobcomponents/Notes";
 import Contacts from "../Contact/Contacts";
 
-const JobShow = ({match}) => {
+const JobShow = ({match,history}) => {
   const [job, setJob] = useState(null);
   const [ editing, setEditing ] = useState(false);
   const authContext = useContext(AuthContext)
@@ -34,7 +34,7 @@ const JobShow = ({match}) => {
   const deleteJob = async () => {
     try{
       const res = await axios.delete(`/api/users/${authContext.user.id}/jobs/${id}`);
-      props.history.push("/")
+      history.push("/")
     } catch (err) {
       alert("could not delete job")
     }
