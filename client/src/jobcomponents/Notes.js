@@ -20,10 +20,8 @@ const Notes =(props)=>{
         alert("Error: No Notes ")
         }
     }
-
     // const renderNotes = () => notes.map( note => <Note key={note.id} note={note} />)
       
-    
     useEffect(()=>{
         getNotes()
       },[])

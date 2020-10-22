@@ -4,6 +4,7 @@ import {AuthContext} from "../providers/AuthProvider";
 import {Button} from "semantic-ui-react";
 import JobForm from '../jobcomponents/JobForm';
 import Notes from "../jobcomponents/Notes";
+import Contacts from "../Contact/Contacts";
 
 const JobShow = ({match}) => {
   const [job, setJob] = useState(null);
@@ -54,6 +55,8 @@ const JobShow = ({match}) => {
         </Button>
         { editing && <JobForm job={job} handleUpdate={handleUpdate}/>  }
         {job && <Notes job={job}/>}
+
+       {job && <Contacts job={job}/>}
     
       </div>
   )

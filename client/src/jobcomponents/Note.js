@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import NotesForm from './NotesForm';
 import { Button} from "semantic-ui-react";
 import Axios from 'axios';
-import { useHistory } from 'react-router'
+import { useHistory } from 'react-router';
 
 const Note = (props) => {
   const history = useHistory()
@@ -24,7 +24,7 @@ const Note = (props) => {
         :    
           <div class="ui card" >
             <div class="content">{props.note.description}</div>
-            <Button onClick={() => setEditing(!editing)}> edit</Button>
+            <Button onClick={() => setEditing(!editing)}> Edit</Button>
             <Button onClick={deleteNote}>
               <p>Delete</p>
             </Button>
