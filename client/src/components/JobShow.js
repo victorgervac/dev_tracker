@@ -6,8 +6,8 @@ import JobForm from '../jobcomponents/JobForm';
 import Notes from "../jobcomponents/Notes";
 import Contacts from "../Contact/Contacts";
 
-const JobShow = ({match}) => {
-  const [job, setJob] = useState(null);
+const JobShow = ({match, ...props}) => {
+  const [job, setJob] = useState([]);
   const [ editing, setEditing ] = useState(false);
   const authContext = useContext(AuthContext)
   const id = match.params.id
@@ -16,10 +16,8 @@ const JobShow = ({match}) => {
   const getJob = async (job) => {
     try {
       let res = await axios.get(`/api/users/${authContext.user.id}/jobs/${id}`);
-      console.log(res.data);
       setJob(res.data);
     } catch (err) {
-      console.log(err.response);
       alert("error");
     }
   };
@@ -33,6 +31,15 @@ const JobShow = ({match}) => {
     setEditing(false);
   }
 
+  const deleteJob = async () => {
+    try{
+      const res = await axios.delete(`/api/users/${authContext.user.id}/jobs/${id}`);
+      props.history.push("/")
+    } catch (err) {
+      alert("could not delete job")
+    }
+  }
+
   const jobInfo = () => {
     return (
       <div>
@@ -40,19 +47,23 @@ const JobShow = ({match}) => {
           <h2>{job.job_title}</h2>
             <h3>{job.salary}</h3>
             <h3>{job.location}</h3>
-            <h3>{new Date(job.date_applied).toDateString()}</h3>
+            <h3>{new Date(job.date_applied).toDateString('en-US', {timeZone: 'UTC'})}</h3>
             <h3>{job.description}</h3>
             <h3>{job.status}</h3>
+            <Button onClick={()=>setEditing(!editing)}>
+              <p>Edit  Info</p>
+            </Button>
+            <Button onClick={deleteJob}>
+              <p>Delete Job</p>
+            </Button>
       </div>
     )
   }
 
   return(
     <div>
-      {job && !editing && jobInfo()}
-        <Button onClick={()=>setEditing(!editing)}>
-            <p>Edit  Info</p>
-        </Button>
+        {!editing && jobInfo()}
+
         { editing && <JobForm job={job} handleUpdate={handleUpdate}/>  }
         {job && <Notes job={job}/>}
 

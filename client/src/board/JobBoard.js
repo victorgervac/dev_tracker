@@ -32,7 +32,6 @@ const JobBoard = () => {
   
   const getJobs = async () => {
     try {
-      // let res = await axios.get(`/api/users/${authContext.user.id}/jobs`);
       let res = await axios.get(`/api/users/${1}/jobs`);
       const stateCards = res.data.map((c) => {
         return { ...c, state: c.status };
