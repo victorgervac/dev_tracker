@@ -6,7 +6,7 @@ import JobForm from '../jobcomponents/JobForm';
 import Notes from "../jobcomponents/Notes";
 import Contacts from "../Contact/Contacts";
 
-const JobShow = ({match,history}) => {
+const JobShow = ({match, history}) => {
   const [job, setJob] = useState(null);
   const [ editing, setEditing ] = useState(false);
   const authContext = useContext(AuthContext)
