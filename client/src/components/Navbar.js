@@ -6,15 +6,7 @@ const Navbar = () => {
   const history = useHistory();
   const { user, handleLogout } = useContext(AuthContext);
   const getRightNav = () => {
-    if (user) {
-      return (
-        <>
-          <div onClick={() => handleLogout(history)} style={styles.navtext}>
-            Logout
-          </div>
-        </>
-      );
-    } else {
+    if(!user){
       return (
         <>
           <Link style={styles.navtext} to="/register">
@@ -42,8 +34,7 @@ const Navbar = () => {
             <Link style={styles.navtext} to="/accountSettings">
               Settings
             </Link>
-          
-            <Link style={styles.navtext} to="/login">
+            <Link onClick={() => handleLogout(history)} style={styles.navtext} to="/login">
               Logout
             </Link>
           </>

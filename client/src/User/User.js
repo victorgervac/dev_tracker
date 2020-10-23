@@ -73,16 +73,16 @@ const User = (props) => {
               value={formValues.email}
             />
             <br />
-            <Form.Input
+            {/* for a latter feature will need axios call in auth*/}
+            {/* <Form.Input
               type="password"
               label="Password"
               placeholder="Password"
               name="password"
-              required
               onChange={handleChange}
               value={formValues.password}
-            />
-            <div>
+            /> */}
+            <div> 
               <Button color="green" type="submit">
                 Save
         </Button>
