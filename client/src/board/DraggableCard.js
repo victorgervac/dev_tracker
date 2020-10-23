@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
 import useDraggableCard from "./useDraggable";
 import Card from "./Card";
+import {AuthContext} from "../providers/AuthProvider"
 
 const DraggableCard = (props) => {
-  const { drag, opacity } = useDraggableCard(props.id, 1);
+  const authContext = useContext(AuthContext)
+  const { drag, opacity } = useDraggableCard(props.id, authContext.user.id);
 
   return (
     <div>
