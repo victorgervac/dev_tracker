@@ -25,10 +25,10 @@ const User = (props) => {
     handleUpdate(
       (user.id),
       {...formValues},
-        // email: email.value,
-        //password: password.value,
-        // first_name: firstName.value, 
-        // last_name: lastName.value,
+      // email: email.value,
+      // password: password.value,
+      // first_name: firstName.value, 
+      // last_name: lastName.value,
        
       history 
     )

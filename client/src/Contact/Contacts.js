@@ -26,10 +26,6 @@ const Contacts=(props)=>{
         getContacts()
         },[])
 
-    const handleClick = () => {
-        setAdding(true)
-    }
-
     const addContact = (newContact) => {
         setContacts([newContact, ...contacts])
         setAdding(false)
@@ -48,15 +44,15 @@ const Contacts=(props)=>{
         return contacts.map((c)=>{
             return (
                 <Contact key={c.id} contact={c} editContact={editContact} job={props.job}/>
-            )
-        })
-    }
-    return(
-        <div>
+                )
+            })
+        }
+        return(
+            <div>
             <h1>Contacts</h1>
-            <Button color="green"  onClick={handleClick}>Add Contact</Button>
+            <Button color="green"  onClick={()=>setAdding(!adding)}>{adding ? "Cancel" : "Add Contact"}</Button>
             { adding && <ContactForm addContact={addContact} job={props.job}/> }
-            <div>{renderContacts()}</div>
+            <div>{!adding && renderContacts()}</div>
         </div>
     )
 }
