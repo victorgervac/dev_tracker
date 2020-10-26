@@ -62,6 +62,7 @@ const JobShow = ({match, history}) => {
   if (!job){
     return <p>loading</p>
   }
+  
   return(
     <div>
         {!editing && jobInfo()}
