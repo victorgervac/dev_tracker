@@ -41,7 +41,6 @@ const JobBoard = () => {
 
       setCards(stateCards);
     } catch (error) {
-      debugger;
       alert("Error getting jobs");
     }
   };
