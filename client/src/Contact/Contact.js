@@ -6,7 +6,6 @@ import { useHistory } from 'react-router';
 import axios from "axios"
 
 const Contact =(props)=>{
-    console.log("contact:",props.contacts)
     const history = useHistory()
     const [ editing, setEditing] = useState(false)
     
