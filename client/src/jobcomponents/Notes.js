@@ -47,13 +47,12 @@ const Notes =(props)=>{
   return (
     <div>
       <h1>Notes</h1>
-      <Button color="green" onClick={handleClick}>
-        <span>Add Note</span>
-      </Button>
+      <Button color="green" onClick={()=>setAdding(!adding)}>{adding ? "Cancel" : "Add Note"}</Button>
       
       { adding && <NotesForm addNote={addNote} job={props.job}/> }
       {/* {renderNotes()} */}
       {notes.map( note => <Note key={note.id} note={note} editNote={editNote} job={props.job}/>)}
+      {/* <div>{!adding && renderNotes()}</div> */}
     </div>
   )
 }
