@@ -1,9 +1,10 @@
 import React, { useState, useContext } from "react";
-import { Button, Form, Label } from "semantic-ui-react";
+import { Button, Form} from "semantic-ui-react";
 import { useFormInput } from "../Hooks/useFormInput";
 import { AuthContext } from "../providers/AuthProvider";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+import DevNoTextLogo from "../images/DevNoTextLogo.png"
 import ContactForm from "../Contact/ContactForm";
 
 const Register = (props) => {
@@ -35,17 +36,22 @@ const Register = (props) => {
   };
 
   return (
-    <Wrapper>
-      <h1>Register</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label color="black">
+    <>
+    <Wrapper >
+      <Form  onSubmit={handleSubmit}>
+        <div style={styles.box}>
+          <div>
+        <h1 style={styles.topLetter}>Welcome to Devtracker.</h1>
+        <div>Create your account by filling the form bellow.</div>
+        </div>
+          <div>
+          <label>
             First Name
           </label>
           <input autoFocus {...firstName} />
         </div>
         <div>
-          <label color="#2B061E">
+          <label>
             Last Name
           </label>
           <input {...lastName} />
@@ -68,16 +74,43 @@ const Register = (props) => {
           </label>
           <input type="password"{...passwordConfirmation} />
         </div>
-        <button color="green" type="submit">
+        <Button color="blue" type="submit">
           Sign Up
-        </button>
-      </form>
-    </Wrapper>
+        </Button>
+        </div>
+      </Form>
+      <PicDiv>
+      </PicDiv>
+      </Wrapper>
+    </>
   );
 };
 export default Register;
 
-const Wrapper = styled.div`
-  padding-left: 5px;
-
+ const PicDiv = styled.div`
+ background: black url(${DevNoTextLogo}) no-repeat center;
+ height: 100vh;
+ width: 100vh;
+ `
+ const Wrapper = styled.div`
+ display: flex;
+ width: 1200px;
+ justify-content: space-between;
+ align-items: center;
 `
+const styles = {
+  box:{
+    margin: "125px 50px 125px 0",
+    lineHeight: "40px",
+    fontSize: "15px",
+    fontWeight: "bold",
+    textShadow: "0 1px white",
+    background: "white",
+    padding: "50px",
+    boxShadow: "5px 5px 5px 5px gray",
+  },
+  topLetter:{
+    fontSize: "40px",
+    fontWeight: "bold",
+  }
+}
