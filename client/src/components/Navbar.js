@@ -2,38 +2,11 @@ import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 
-// const Navbar = () => (
-// //   <Menu>
-//     <Link to="/">
-//       <Menu.Item>Home</Menu.Item>
-//     </Link>
-//     <Link to="/about">
-//       <Menu.Item>About</Menu.Item>
-//     </Link>
-//     <Link to="/items">
-//       <Menu.Item>Items</Menu.Item>
-//     </Link>
-//     <Link to="/register">
-//       <Menu.Item>Register</Menu.Item>
-//     </Link>
-//     <Link to="/login">
-//       <Menu.Item>login</Menu.Item>
-//     </Link>
-//   </Menu>
-// );
 const Navbar = () => {
   const history = useHistory();
   const { user, handleLogout } = useContext(AuthContext);
   const getRightNav = () => {
-    if (user) {
-      return (
-        <>
-          <div onClick={() => handleLogout(history)} style={styles.navtext}>
-            Logout
-          </div>
-        </>
-      );
-    } else {
+    if(!user){
       return (
         <>
           <Link style={styles.navtext} to="/register">
@@ -50,9 +23,7 @@ const Navbar = () => {
 
   return (
     <div style={styles.navbar}>
-      <div>
-        {/* ToDo: remove this! */}
-        
+      <div>        
         <Link style={styles.navtext} to="/">
           Home
         </Link>
@@ -63,8 +34,7 @@ const Navbar = () => {
             <Link style={styles.navtext} to="/accountSettings">
               Settings
             </Link>
-          
-            <Link styles={styles.navtext} to="/login">
+            <Link onClick={() => handleLogout(history)} style={styles.navtext} to="/login">
               Logout
             </Link>
           </>
@@ -79,13 +49,13 @@ const styles = {
   navbar: {
     width: "100%",
     height: "50px",
-    backgroundColor: "blue",
+    backgroundColor: "#331832",
     padding: "10px",
     display: "flex",
     justifyContent: "space-between",
   },
   navtext: {
-    color: "white",
+    color: "#F1ECCE",
     fontFamily: "Roboto",
     fontSize: "2em",
   },

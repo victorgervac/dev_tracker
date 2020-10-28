@@ -2,7 +2,6 @@ import Axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
 import { Button, Form, Label, List, Table } from "semantic-ui-react";
 import { AuthContext } from "../providers/AuthProvider";
-//import UserForm from "./UserForm"
 import { Link, useHistory } from "react-router-dom"
 import { useFormInput } from "../Hooks/useFormInput";
 
@@ -24,10 +23,10 @@ const User = (props) => {
     handleUpdate(
       (user.id),
       {...formValues},
-        // email: email.value,
-        //password: password.value,
-        // first_name: firstName.value, 
-        // last_name: lastName.value,
+      // email: email.value,
+      // password: password.value,
+      // first_name: firstName.value, 
+      // last_name: lastName.value,
        
     history
     )
@@ -72,16 +71,16 @@ const User = (props) => {
               value={formValues.email}
             />
             <br />
-            <Form.Input
+            {/* for a latter feature will need axios call in auth*/}
+            {/* <Form.Input
               type="password"
               label="Password"
               placeholder="Password"
               name="password"
-              //required
               onChange={handleChange}
               value={formValues.password}
-            />
-            <div>
+            /> */}
+            <div> 
               <Button color="green" type="submit">
                 Save
         </Button>

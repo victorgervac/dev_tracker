@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import {Button} from "semantic-ui-react"
@@ -6,6 +6,7 @@ import JobCard from "../jobcomponents/JobCard";
 import Board from './Board';
 import axios from "axios";
 import styled from "styled-components";
+import {AuthContext} from "../providers/AuthProvider"
 
 
 const boards = [
@@ -29,12 +30,11 @@ const boards = [
 
 const JobBoard = () => {
   const [cards, setCards] = useState([]);
-  
+  const authContext = useContext(AuthContext)
   const getJobs = async () => {
     try {
-      // let res = await axios.get(`/api/users/${authContext.user.id}/jobs`);
-      let res = await axios.get(`/api/users/${1}/jobs`);
-      console.log()
+      let res = await axios.get(`/api/users/${authContext.user.id}/jobs`);
+      console.log(res.data)
       const stateCards = res.data.map((c) => {
         return { ...c, state: c.status };
       });

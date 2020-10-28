@@ -3,21 +3,21 @@ import axios from "axios";
 import {AuthContext} from "../providers/AuthProvider";
 import {Button} from "semantic-ui-react";
 import JobForm from '../jobcomponents/JobForm';
+import Notes from "../jobcomponents/Notes";
+import Contacts from "../Contact/Contacts";
 
-const JobShow = ({match}) => {
-  const [job, setJob] = useState([]);
+const JobShow = ({match, history}) => {
+  const [job, setJob] = useState(null);
   const [ editing, setEditing ] = useState(false);
   const authContext = useContext(AuthContext)
-  console.log(authContext);
   const id = match.params.id
+  //console.log(authContext);
 
   const getJob = async (job) => {
     try {
       let res = await axios.get(`/api/users/${authContext.user.id}/jobs/${id}`);
-      console.log(res.data);
       setJob(res.data);
     } catch (err) {
-      console.log(err.response);
       alert("error");
     }
   };
@@ -30,6 +30,16 @@ const JobShow = ({match}) => {
     setJob({...updatedJob})
     setEditing(false);
   }
+
+  const deleteJob = async () => {
+    try{
+      const res = await axios.delete(`/api/users/${authContext.user.id}/jobs/${id}`);
+      history.push("/")
+    } catch (err) {
+      alert("could not delete job")
+    }
+  }
+
   const jobInfo = () => {
     return (
       <div>
@@ -37,24 +47,30 @@ const JobShow = ({match}) => {
           <h2>{job.job_title}</h2>
             <h3>{job.salary}</h3>
             <h3>{job.location}</h3>
-            <h3>{new Date(job.date_applied).toDateString()}</h3>
+            <h3>{new Date(job.date_applied).toDateString('en-US', {timeZone: 'UTC'})}</h3>
             <h3>{job.description}</h3>
             <h3>{job.status}</h3>
+            <Button onClick={()=>setEditing(!editing)}>
+              <p>Edit  Info</p>
+            </Button>
+            <Button onClick={deleteJob}>
+              <p>Delete Job</p>
+            </Button>
       </div>
     )
   }
-
+  if (!job){
+    return <p>loading</p>
+  }
+  
   return(
     <div>
         {!editing && jobInfo()}
-
-        <Button onClick={()=>setEditing(!editing)}>
-            <p>Edit  Info</p>
-        </Button>
-
-        { editing && <JobForm job={job} handleUpdate={handleUpdate}/>  }
+        {editing && <JobForm job={job} handleUpdate={handleUpdate}/>  }
+        {<Notes job={job}/>}
+        {<Contacts job={job}/>}
+    
       </div>
-
   )
 }
 
