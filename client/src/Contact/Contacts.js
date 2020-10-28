@@ -38,21 +38,15 @@ const Contacts=(props)=>{
         }return c
     
         }))
-    } 
-
-    const renderContacts= ()=> {
-        return contacts.map((c)=>{
-            return (
-                <Contact key={c.id} contact={c} editContact={editContact} job={props.job}/>
-                )
-            })
-        }
-        return(
-            <div>
-            <h1>Contacts</h1>
-            <Button color="green"  onClick={()=>setAdding(!adding)}>{adding ? "Cancel" : "Add Contact"}</Button>
-            { adding && <ContactForm addContact={addContact} job={props.job}/> }
-            <div>{!adding && renderContacts()}</div>
+    }
+            
+    return(
+        <div>
+        <strong>Contacts</strong>
+        <hr/>
+        <Button color="green"  onClick={()=>setAdding(!adding)} size="mini">{adding ? "Cancel" : "Add Contact"}</Button>
+        { adding && <ContactForm addContact={addContact} job={props.job}/> }
+        {contacts.map( c => <Contact key={c.id} contact={c} editContact={editContact} job={props.job}/>)}
         </div>
     )
 }

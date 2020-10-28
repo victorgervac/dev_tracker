@@ -2,6 +2,7 @@ import React, {useState, useContext} from "react";
 import {Form, Button, Dropdown} from "semantic-ui-react";
 import {AuthContext} from "../providers/AuthProvider";
 import axios from "axios";
+import styled from "styled-components";
 
 const JobForm = ({job={}, location={}, ...props}) => {
   const { status } = location.state || ""
@@ -100,6 +101,9 @@ const JobForm = ({job={}, location={}, ...props}) => {
   ]
 
   return(
+    <>
+    <div style={styles.header}>{job.id ? "Edit Job" : "Add Job"}</div>
+    <Wrapper>
     <Form onSubmit={handleSubmit} status={status}>
       <Form.Input
         name="company"
@@ -159,9 +163,31 @@ const JobForm = ({job={}, location={}, ...props}) => {
       options={statusOptions}
       onChange={handleDrop}
       />
-      <Button type='submit'>Submit</Button>
+      <Button type='submit'>Save Job</Button>
     </Form>
+    </Wrapper>
+    </>
   )
 };
 
- export default JobForm;
+const styles = {
+  header: {
+      fontWeight: "bold",
+      backgroundColor: "#606F8C",
+      color: "white",
+      textAlign: "center",
+      height: "50px",
+      paddingTop: "10px",
+      font: "Open Sans",
+      fontSize: "20px"
+  }
+};
+
+const Wrapper = styled.div`
+  padding-left: 5px;
+  padding-right: 5px;
+`
+
+
+export default JobForm;
+

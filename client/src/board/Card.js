@@ -10,10 +10,10 @@ const Card = ({opacity=1, job_title, company, id}) => {
     <div onClick={navigate} className="card" style={{
       opacity,
       margin: 5,
-      borderRadius: 2,
+      borderRadius: "15px",
       marginBottom: 0,
     }}>
-      <div style={{ padding: "8px", color: "white", backgroundColor: "#9F35FE" }}>
+      <div style={{ padding: "8px", color: "white", backgroundColor: "#606F8C" }}>
         <p style={{ fontSize: "12px", fontWeight: 700 }}>{job_title}</p> 
         <p style={{ fontSize: "8px", fontWeight: 300 }}>{company}</p>
       </div>

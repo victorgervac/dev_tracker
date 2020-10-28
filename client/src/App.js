@@ -20,7 +20,7 @@ function App() {
   return (
     <>
     <FetchUser>
-      <Container>
+      <Container color="black">
         <Navbar />
         <Switch>
           <ProtectedRoute exact path="/" component={JobBoard} />
