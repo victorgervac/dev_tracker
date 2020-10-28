@@ -22,34 +22,57 @@ const Login = (props) => {
   };
   return (
     <Wrapper>
-      {authErrors && (
-        <>
-          {authErrors.map((err) => (
-            <p>{err}</p>
-          ))}
-        </>
-      )}
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <p>{email.label}</p>
-        <input autoFocus {...email} />
-        <p>{password.label}</p>
-        <input type="password" {...password} />
-        {authLoading ? (
-          <button disabled loading>Loading</button>
-        ) : (
-          <button type="submit">login</button>
-        )}
-      </form>
+      <PicDiv>
+
+      </PicDiv>
+      <div style={styles.box}>
+        <h1 style={styles.topLetter}>Login to DevTracker</h1>
+        <br/>
+        <form onSubmit={handleSubmit}>
+          <p>{email.label}</p>
+          <input autoFocus {...email} />
+          <p>{password.label}</p>
+          <input type="password" {...password} />
+          {authLoading ? (
+            <button disabled loading>Loading</button>
+          ) : (
+            <button type="submit">login</button>
+          )}
+        </form>
+      </div>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  background: black url(${devLogo}) no-repeat center;
-  height: 100vh;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
 `
+const PicDiv = styled.div`
+  background: url(${devLogo}) no-repeat center;
+  width: 100%;
+  
+`
+
+
+
+const styles = {
+  box:{
+    // margin: "150px 0px 100px px",
+    lineHeight: "40px",
+    fontSize: "15px",
+    fontWeight: "bold",
+    textShadow: "0 1px white",
+    background: "#f3f3f3",
+    padding: "50px",
+    width: "50px",
+    height: "300px"
+  },
+  topLetter:{
+    fontSize: "25px",
+    fontWeight: "bold",
+  }
+}
 
 export default Login;
 

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Card } from "semantic-ui-react";
 import Contact from "./Contact";
 import ContactForm from "./ContactForm";
+import styled from "styled-components";
 
 const Contacts=(props)=>{
     const [ contacts, setContacts ]= useState([])
@@ -41,14 +42,22 @@ const Contacts=(props)=>{
     }
             
     return(
-        <div>
-        <strong>Contacts</strong>
-        <hr/>
-        <Button color="green"  onClick={()=>setAdding(!adding)} size="mini">{adding ? "Cancel" : "Add Contact"}</Button>
-        { adding && <ContactForm addContact={addContact} job={props.job}/> }
-        {contacts.map( c => <Contact key={c.id} contact={c} editContact={editContact} job={props.job}/>)}
-        </div>
+        <Wrapper>
+            <strong>Contacts</strong>
+            <hr/>
+            <Button color="green" onClick={()=>setAdding(!adding)} size="mini">{adding ? "Cancel" : "Add Contact"}</Button>
+            { adding && <ContactForm addContact={addContact} job={props.job}/> }
+            {contacts.map( c => <Contact key={c.id} contact={c} editContact={editContact} job={props.job}/>)}
+        </Wrapper>
     )
 }
+
+const Wrapper = styled.div`
+  border-width: 3px;
+  border-color: #606F8C;
+  border-style: solid;
+  border-radius: 5px;
+  width: 50%;
+`
 
 export default Contacts
