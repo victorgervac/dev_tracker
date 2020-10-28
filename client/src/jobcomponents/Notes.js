@@ -3,7 +3,8 @@ import React, { useContext, useEffect, useState } from "react"
 import { Button} from "semantic-ui-react";
 import {Link} from "react-router-dom"
 import NotesForm from './NotesForm';
-import Note from "./Note"
+import Note from "./Note";
+import styled from "styled-components";
 
 const Notes =(props)=>{
     const [notes, setNotes]= useState([])
@@ -40,16 +41,22 @@ const Notes =(props)=>{
   }
 
   return (
-    <div>
+    <Wrapper>
       <strong>Notes</strong>
       <hr/>
       <Button color="green" onClick={()=>setAdding(!adding)} size="mini">{adding ? "Cancel" : "Add Note"}</Button>
-      
       { adding && <NotesForm addNote={addNote} job={props.job}/> }
-      {/* {renderNotes()} */}
       {notes.map( note => <Note key={note.id} note={note} editNote={editNote} job={props.job}/>)}
-      {/* <div>{!adding && renderNotes()}</div> */}
-    </div>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.div`
+  border-width: 3px;
+  border-color: #606F8C;
+  border-style: solid;
+  border-radius: 5px;
+  width: 50%;
+`
+
 export default Notes 
