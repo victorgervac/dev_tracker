@@ -42,7 +42,7 @@ const Notes =(props)=>{
 
   return (
     <Wrapper>
-      <strong>Notes</strong>
+      <Header>Notes</Header>
       <hr/>
       <Button color="green" onClick={()=>setAdding(!adding)} size="mini">{adding ? "Cancel" : "Add Note"}</Button>
       { adding && <NotesForm addNote={addNote} job={props.job}/> }
@@ -57,6 +57,11 @@ const Wrapper = styled.div`
   border-style: solid;
   border-radius: 5px;
   width: 50%;
+`
+
+const Header = styled.div`
+  font-weight: 700;
+  font-size: 20px;
 `
 
 export default Notes 

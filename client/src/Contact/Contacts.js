@@ -43,7 +43,7 @@ const Contacts=(props)=>{
             
     return(
         <Wrapper>
-            <strong>Contacts</strong>
+            <Header>Contacts</Header>
             <hr/>
             <Button color="green" onClick={()=>setAdding(!adding)} size="mini">{adding ? "Cancel" : "Add Contact"}</Button>
             { adding && <ContactForm addContact={addContact} job={props.job}/> }
@@ -58,6 +58,11 @@ const Wrapper = styled.div`
   border-style: solid;
   border-radius: 5px;
   width: 50%;
+`
+
+const Header = styled.div`
+  font-weight: 700;
+  font-size: 20px;
 `
 
 export default Contacts
