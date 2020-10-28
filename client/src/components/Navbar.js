@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
+import styled from "styled-components";
 
 const Navbar = () => {
   const history = useHistory();
@@ -23,40 +24,45 @@ const Navbar = () => {
 
   return (
     <div style={styles.navbar}>
-      <div>        
-        <Link style={styles.navtext} to="/">
-          Home
-        </Link>
-      </div>
-      <div>
-        {user && 
-          <>
+      {user && 
+        <Wrapper>   
+          <div> 
+            <Link style={styles.navtext} to="/">
+              Home
+            </Link>
+          </div>
+          <div>
             <Link style={styles.navtext} to="/accountSettings">
               Settings
             </Link>
+            <span style={{ marginRight: "10px" }}></span>
             <Link onClick={() => handleLogout(history)} style={styles.navtext} to="/login">
               Logout
             </Link>
-          </>
-        }
-        {getRightNav()}
-      </div>
+          </div>
+        </Wrapper>
+      }
+      {getRightNav()}
     </div>
   );
 };
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
 
 const styles = {
   navbar: {
     width: "100%",
     height: "50px",
-    backgroundColor: "#331832",
+    backgroundColor: "black",
     padding: "10px",
-    display: "flex",
     justifyContent: "space-between",
   },
   navtext: {
     color: "#F1ECCE",
-    fontFamily: "Roboto",
+    fontFamily: "Open Sans",
     fontSize: "2em",
   },
 };
