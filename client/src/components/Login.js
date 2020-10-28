@@ -2,8 +2,10 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { useFormInput } from "../Hooks/useFormInput";
 import { AuthContext } from "../providers/AuthProvider";
-import devLogo from "../images/DevTrackerLogo.png";
-import styled from "styled-components"
+import devLogo from "../images/DevNoTextLogo.png";
+import styled from "styled-components";
+import {Link} from "react-router-dom";
+import {Button} from "semantic-ui-react";
 
 const Login = (props) => {
   const history = useHistory();
@@ -22,9 +24,15 @@ const Login = (props) => {
   };
   return (
     <Wrapper>
-      <PicDiv>
-
-      </PicDiv>
+      <PicWrapper>
+        <PicDiv/>
+        <Text>
+          New to DevTracker? Sign up below
+          <ButtonDiv>
+            <Link to="/register"><Button> Sign Up</Button></Link>
+          </ButtonDiv>
+        </Text>
+      </PicWrapper>
       <div style={styles.box}>
         <h1 style={styles.topLetter}>Login to DevTracker</h1>
         <br/>
@@ -49,27 +57,48 @@ const Wrapper = styled.div`
   justify-content: space-between;
 `
 const PicDiv = styled.div`
-  background: url(${devLogo}) no-repeat center;
-  width: 100%;
-  
+  background: black url(${devLogo}) no-repeat center;
+  background-size: cover;
+  height: 300px;
+  width: 300px;
 `
+
+const PicWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: black;
+  height: 100vh;
+  width: 40%;
+`
+
+const Text = styled.div`
+  color: white;
+`
+
+const ButtonDiv = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
 
 
 
 const styles = {
   box:{
-    // margin: "150px 0px 100px px",
+    margin: "125px 50px 125px 50px",
     lineHeight: "40px",
     fontSize: "15px",
     fontWeight: "bold",
     textShadow: "0 1px white",
-    background: "#f3f3f3",
+    background: "white",
     padding: "50px",
-    width: "50px",
-    height: "300px"
+    boxShadow: "5px 5px 5px 5px gray",
+    width: "60%"
   },
   topLetter:{
-    fontSize: "25px",
+    fontSize: "40px",
     fontWeight: "bold",
   }
 }
