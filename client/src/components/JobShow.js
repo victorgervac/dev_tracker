@@ -1,10 +1,15 @@
 import React, {useEffect, useContext, useState} from "react";
 import axios from "axios";
 import {AuthContext} from "../providers/AuthProvider";
+<<<<<<< HEAD
 import {Button, Dimmer, Loader, Image, Segment} from "semantic-ui-react";
+=======
+import {Button, Card, Dimmer, Loader} from "semantic-ui-react";
+>>>>>>> 7c8845258091b61c960dea8fdac5bbbbe01348c7
 import JobForm from '../jobcomponents/JobForm';
 import Notes from "../jobcomponents/Notes";
 import Contacts from "../Contact/Contacts";
+import styled from "styled-components";
 
 const JobShow = ({match, history}) => {
   const [job, setJob] = useState(null);
@@ -42,41 +47,61 @@ const JobShow = ({match, history}) => {
 
   const jobInfo = () => {
     return (
-      <div>
-        <h1>{job.company}</h1>
-          <h2>{job.job_title}</h2>
-            <h3>{job.salary}</h3>
-            <h3>{job.location}</h3>
-            <h3>{new Date(job.date_applied).toDateString('en-US', {timeZone: 'UTC'})}</h3>
-            <h3>{job.description}</h3>
-            <h3>{job.status}</h3>
-            <Button onClick={()=>setEditing(!editing)}>
-              <p>Edit  Info</p>
-            </Button>
-            <Button onClick={deleteJob}>
-              <p>Delete Job</p>
-            </Button>
-      </div>
+      <Card fluid textAlign="center">
+      <Card.Content>
+        <Card.Header>{job.company}</Card.Header>
+        <hr/>
+        <Card.Description><strong>Job Title: </strong>{job.job_title}</Card.Description>
+        <Card.Description><strong>Status: </strong>{job.status}</Card.Description>
+        <Card.Description><strong>Salary: </strong>{job.salary}</Card.Description>
+        <Card.Description><strong>Location: </strong>{job.location}</Card.Description>
+        <Card.Description><strong>Date Applied: </strong>{new Date(job.date_applied).toDateString('en-US', {timeZone: 'UTC'})}</Card.Description>
+        <Card.Description><strong>Description: </strong>{job.description}</Card.Description>
+      </Card.Content>
+      <Card.Content extra>
+        <div>
+          <Button basic color='green' onClick={()=>setEditing(!editing)}>
+            Edit
+          </Button>
+          <Button basic color='red' onClick={deleteJob}>
+            Delete
+          </Button>
+        </div>
+      </Card.Content>
+    </Card>
     )
   }
   if (!job){
-    return (
-      <div>
-          <Dimmer active inverted>
-          <Loader size='large'></Loader>
-          </Dimmer>
-      </div>
-  )}
+    return( 
+    <div>
+      <Dimmer active inverted>
+      <Loader size='large'></Loader>
+      </Dimmer>
+    </div>
+    )}
   
   return(
     <div>
         {!editing && jobInfo()}
         {editing && <JobForm job={job} handleUpdate={handleUpdate}/>  }
-        {<Notes job={job}/>}
-        {<Contacts job={job}/>}
-    
+        <div style={styles.wrapper}>
+          {<Notes job={job}/>}
+          {<Contacts job={job}/>}
+        </div>
       </div>
   )
 }
+
+const styles = {
+  wrapper: {
+      display: "flex",
+      justifyContent: "space-between",
+  }
+};
+
+const Wrapper = styled.div`
+  padding-left: 5px;
+  padding-right: 5px;
+`
 
 export default JobShow;

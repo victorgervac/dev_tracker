@@ -3,6 +3,8 @@ import { Button, Form, Label } from "semantic-ui-react";
 import { useFormInput } from "../Hooks/useFormInput";
 import { AuthContext } from "../providers/AuthProvider";
 import { useHistory } from "react-router-dom";
+import styled from "styled-components";
+import ContactForm from "../Contact/ContactForm";
 
 const Register = (props) => {
   const email = useFormInput("test@test.com", "E-mail");
@@ -33,48 +35,49 @@ const Register = (props) => {
   };
 
   return (
-    <div>
+    <Wrapper>
       <h1>Register</h1>
-
-      <Form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div>
-          <Label color="blue" ribbon>
+          <label color="black">
             First Name
-          </Label>
-          <Form.Input autoFocus {...firstName} />
-          <Label color="blue" ribbon>
-            Last Name
-          </Label>
-          <Form.Input {...lastName} />
-          <Label color="blue" ribbon>
-            E-MAIL
-          </Label>
-          <Form.Input {...email} />
+          </label>
+          <input autoFocus {...firstName} />
         </div>
-        <br />
-        <Label color="blue" ribbon>
-          PASSWORD
-        </Label>
-        <Form.Input type="password" style={styles.item} {...password} />
-        <br />
-        <Label color="blue" ribbon>
-          PASSWORD CONFIRMATION
-        </Label>
-        <Form.Input type="password" {...passwordConfirmation} />
-        <br />
-        <Button color="green" type="submit">
-          Register
-        </Button>
-      </Form>
-    </div>
+        <div>
+          <label color="#2B061E">
+            Last Name
+          </label>
+          <input {...lastName} />
+        </div>
+        <div>
+          <label color="#2B061E">
+            E-mail
+          </label>
+          <input {...email} />
+        </div>
+        <div>
+          <label color="#2B061E">
+            Password
+          </label>
+          <input type="password"  {...password} />
+        </div>
+        <div>
+          <label color="#2B061E">
+            Password Confirmation
+          </label>
+          <input type="password"{...passwordConfirmation} />
+        </div>
+        <button color="green" type="submit">
+          Sign Up
+        </button>
+      </form>
+    </Wrapper>
   );
 };
 export default Register;
 
-const styles = {
-  formInput: {
-    color: "black",
+const Wrapper = styled.div`
+  padding-left: 5px;
 
-    fontWeight: "bold",
-  },
-};
+`

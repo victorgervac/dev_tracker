@@ -20,7 +20,7 @@ export default (props) => {
           status: props.state 
         }
       }}>
-        <Button as="submit" style={{width:"100%"}}><Icon name="add"/></Button>
+        <Button as="submit" style={{width:"100%"}}><Icon name="add" size="large"/></Button>
       </Link>
         <article
           className={`panel is-${props.color} ${

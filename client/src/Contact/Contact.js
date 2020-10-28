@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Card, Button } from "semantic-ui-react";
+import { Card, Button, Feed, Icon } from "semantic-ui-react";
 import Contacts from "./Contacts";
 import ContactForm from "./ContactForm";
 import { useHistory } from 'react-router';
@@ -20,25 +20,45 @@ const Contact =(props)=>{
     
     return(
         <>
-        { editing
-            ?
-             <ContactForm editContact={props.editContact} setEditing={setEditing} contact={props.contact} job={props.job}/>
-            :
-                <div>
-                    <div class="ui card">
-                    <div class="content">{props.contact.first_name}</div>
-                    <div class="content">{props.contact.last_name}</div>
-                    <div class="content">{props.contact.phone}</div>
-                    <div class="content">{props.contact.email}</div>
-                    <Button onClick={() => setEditing(!editing)}> Edit</Button>
-                    <Button onClick={deleteContact} color="red">
-                        <p>Delete</p>
-                    </Button>
-                </div>
-            </div>
-        }
+            { editing
+                ?
+                <ContactForm editContact={props.editContact} setEditing={setEditing} contact={props.contact} job={props.job}/>
+                :
+                <Card>
+                <Card.Content>
+                  <Card.Header>{props.contact.first_name} {props.contact.last_name}</Card.Header>
+                </Card.Content>
+                <Card.Content>
+                  <Feed>
+                    <Feed.Event>
+                      <Feed.Label image='https://react.semantic-ui.com/images/avatar/small/jenny.jpg' />
+                      <Feed.Content>
+                        <Feed.Summary>
+                        {props.contact.phone}
+                        </Feed.Summary>
+                        <Feed.Summary>
+                        {props.contact.email}
+                        </Feed.Summary>
+                        <Icon name="trash" color="red" onClick={deleteContact}/>
+                        <Icon name="pencil" color="green" onClick={() => setEditing(!editing)}/>
+                      </Feed.Content>
+                    </Feed.Event>
+                  </Feed>
+                </Card.Content>
+              </Card>
+            }
         </>
     )
 }
+
+const styles = {
+    content: {
+      display: "flex",
+    },
+    header: {
+        fontWeight: "bold",
+        marginRight: "10px"
+    }
+  };
 
 export default Contact;

@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { useFormInput } from "../Hooks/useFormInput";
 import { AuthContext } from "../providers/AuthProvider";
+import devLogo from "../images/DevTrackerLogo.png";
+import styled from "styled-components"
 
 const Login = (props) => {
   const history = useHistory();
@@ -19,7 +21,7 @@ const Login = (props) => {
     handleLogin({ email: email.value, password: password.value }, history);
   };
   return (
-    <div>
+    <Wrapper>
       {authErrors && (
         <>
           {authErrors.map((err) => (
@@ -39,8 +41,15 @@ const Login = (props) => {
           <button type="submit">login</button>
         )}
       </form>
-    </div>
+    </Wrapper>
   );
 };
 
+const Wrapper = styled.div`
+  background: black url(${devLogo}) no-repeat center;
+  height: 100vh;
+  text-align: center;
+`
+
 export default Login;
+
