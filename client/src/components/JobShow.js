@@ -1,11 +1,7 @@
 import React, {useEffect, useContext, useState} from "react";
 import axios from "axios";
 import {AuthContext} from "../providers/AuthProvider";
-<<<<<<< HEAD
-import {Button, Dimmer, Loader, Image, Segment} from "semantic-ui-react";
-=======
 import {Button, Card, Dimmer, Loader} from "semantic-ui-react";
->>>>>>> 7c8845258091b61c960dea8fdac5bbbbe01348c7
 import JobForm from '../jobcomponents/JobForm';
 import Notes from "../jobcomponents/Notes";
 import Contacts from "../Contact/Contacts";
