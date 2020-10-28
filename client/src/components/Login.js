@@ -34,7 +34,7 @@ const Login = (props) => {
         <p>{password.label}</p>
         <input type="password" {...password} />
         {authLoading ? (
-          <button disabled>spinner boi</button>
+          <button disabled loading>Loading</button>
         ) : (
           <button type="submit">login</button>
         )}

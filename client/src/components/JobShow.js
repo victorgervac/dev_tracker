@@ -1,7 +1,7 @@
 import React, {useEffect, useContext, useState} from "react";
 import axios from "axios";
 import {AuthContext} from "../providers/AuthProvider";
-import {Button} from "semantic-ui-react";
+import {Button, Dimmer, Loader, Image, Segment} from "semantic-ui-react";
 import JobForm from '../jobcomponents/JobForm';
 import Notes from "../jobcomponents/Notes";
 import Contacts from "../Contact/Contacts";
@@ -60,8 +60,13 @@ const JobShow = ({match, history}) => {
     )
   }
   if (!job){
-    return <p>loading</p>
-  }
+    return (
+      <div>
+          <Dimmer active inverted>
+          <Loader size='large'></Loader>
+          </Dimmer>
+      </div>
+  )}
   
   return(
     <div>
