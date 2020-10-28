@@ -44,50 +44,42 @@ const User = (props) => {
   const renderUsers = () => {
     return (
       <>
+      <div style={styles.box}>
+      <div style={styles.header}>Account Settings</div>
         <Form onSubmit={handleSubmit}>
-          <Form.Group widths="equal">
-            <Form.Input
-              label="First Name"
+            <label>
+            First Name
+            </label>
+            <input
               placeholder="First Name"
               name="first_name"
               required
               onChange={handleChange}
               value={formValues.first_name}
-            />
-            <Form.Input
-              label="Last Name"
+              />
+            <label>
+              Last Name
+            </label>
+            <input
               placeholder="Last Name"
               name="last_name"
               required
               onChange={handleChange}
               value={formValues.last_name}
-            />
-            <br />
-            <Form.Input
-              label="E-Mail"
+              />
+            <label>E-mail</label>
+            <input
               placeholder="E-Mail"
               name="email"
               required
               onChange={handleChange}
               value={formValues.email}
-            />
-            <br />
-            {/* for a latter feature will need axios call in auth*/}
-            {/* <Form.Input
-              type="password"
-              label="Password"
-              placeholder="Password"
-              name="password"
-              onChange={handleChange}
-              value={formValues.password}
-            /> */}
-            <div> 
-              <Button color="green" type="submit">
+              />
+              <Button style={styles.button} color="green" type="submit">
                 Save
-        </Button>
-            </div>
-          </Form.Group>
+              </Button>
         </Form>
+      </div>
       </>
     );
   };
@@ -99,4 +91,25 @@ const User = (props) => {
   );
 };
 
+const styles = {
+  box:{
+    margin: "50px 250px 125px 250px",
+    lineHeight: "40px",
+    fontSize: "15px",
+    fontWeight: "bold",
+    textShadow: "0 1px white",
+    background: "white",
+    padding: "50px",
+    boxShadow: "5px 5px 5px 5px gray",
+  },
+  button:{
+    top:"15px",
+    right: "-400px",
+  },
+  header:{
+    fontSize: "40px",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+}
 export default User;

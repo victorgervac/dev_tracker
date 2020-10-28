@@ -14,7 +14,6 @@ const AuthProvider = (props) => {
     try {
       setAuthLoading(true);
       setAuthErrors(null);
-
       let res = await Axios.post("/api/auth", user);
       setUser(res.data.data);
       history.push("/");

@@ -4,6 +4,7 @@ import { useFormInput } from "../Hooks/useFormInput";
 import { AuthContext } from "../providers/AuthProvider";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+import DevNoTextLogo from "../images/DevNoTextLogo.png"
 import ContactForm from "../Contact/ContactForm";
 
 const Register = (props) => {
@@ -35,7 +36,8 @@ const Register = (props) => {
   };
 
   return (
-    <Wrapper>
+    <>
+    <Wrapper >
       <Form  onSubmit={handleSubmit}>
         <div style={styles.box}>
           <div>
@@ -72,24 +74,33 @@ const Register = (props) => {
           </label>
           <input type="password"{...passwordConfirmation} />
         </div>
-        <Button style={styles.button} color="blue" type="submit">
+        <Button color="blue" type="submit">
           Sign Up
         </Button>
-        
         </div>
       </Form>
-    </Wrapper>
+      <PicDiv>
+      </PicDiv>
+      </Wrapper>
+    </>
   );
 };
 export default Register;
 
-const Wrapper = styled.div`
-  padding-left: 5px;
-
+ const PicDiv = styled.div`
+ background: black url(${DevNoTextLogo}) no-repeat center;
+ height: 100vh;
+ width: 100vh;
+ `
+ const Wrapper = styled.div`
+ display: flex;
+ width: 1200px;
+ justify-content: space-between;
+ align-items: center;
 `
 const styles = {
   box:{
-    margin: "125px 550px 125px 0",
+    margin: "125px 50px 125px 0",
     lineHeight: "40px",
     fontSize: "15px",
     fontWeight: "bold",
@@ -101,9 +112,5 @@ const styles = {
   topLetter:{
     fontSize: "40px",
     fontWeight: "bold",
-  },
-  button:{
-    top: "20px",
-    right: "-350px",
   }
 }
