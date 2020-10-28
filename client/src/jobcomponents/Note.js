@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import NotesForm from './NotesForm';
-import { Button} from "semantic-ui-react";
+import { Button, Card, Feed, Icon} from "semantic-ui-react";
 import Axios from 'axios';
 import { useHistory } from 'react-router';
 
@@ -22,13 +22,21 @@ const Note = (props) => {
         ? 
            <NotesForm editNote={props.editNote} setEditing={setEditing} note={props.note} job={props.job} />
         :    
-          <div class="ui card" >
-            <div class="content">{props.note.description}</div>
-            <Button onClick={() => setEditing(!editing)}> Edit</Button>
-            <Button onClick={deleteNote}>
-              <p>Delete</p>
-            </Button>
-          </div>
+        <Card>
+          <Card.Content>
+            <Feed>
+              <Feed.Event>
+                <Feed.Content>
+                  <Feed.Summary>
+                  {props.note.description}
+                  </Feed.Summary>
+                  <Icon name="trash" color="red" onClick={deleteNote}/>
+                  <Icon name="pencil" color="green" onClick={() => setEditing(!editing)}/>
+                </Feed.Content>
+              </Feed.Event>
+            </Feed>
+          </Card.Content>
+        </Card>
       }
     </>
   )

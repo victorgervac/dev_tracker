@@ -8,7 +8,6 @@ const ContactForm = ({contact={}, ...props})=> {
   const [lastName, setLastName] = useState( contact.last_name || "" );
   const [phone, setPhone] = useState( contact.phone || "" );
   const [email, setEmail]= useState( contact.email || "" );
-  console.log("conatct props",props)
   const jobId = props.job.id
 
   const handleSubmit =(e)=>{
@@ -20,9 +19,7 @@ const ContactForm = ({contact={}, ...props})=> {
         .then((res)=>{
             props.editContact(res.data)
             props.setEditing(false)
-            console.log("update",res.data)
         }).catch((err)=>{
-            console.log(err)
             alert("can not update contact")
         })
       } else {
