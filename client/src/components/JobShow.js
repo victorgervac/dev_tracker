@@ -12,7 +12,6 @@ const JobShow = ({match, history}) => {
   const [ editing, setEditing ] = useState(false);
   const authContext = useContext(AuthContext)
   const id = match.params.id
-  //console.log(authContext);
 
   const getJob = async (job) => {
     try {
@@ -91,7 +90,7 @@ const JobShow = ({match, history}) => {
 const styles = {
   wrapper: {
       display: "flex",
-      justifyContent: "space-between",
+      justifyContent: "space-evenly",
   }
 };
 
