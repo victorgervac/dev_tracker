@@ -5,7 +5,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import devLogo from "../images/DevNoTextLogo.png";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
-import {Button} from "semantic-ui-react";
+import {Button, Form} from "semantic-ui-react";
 
 const Login = (props) => {
   const history = useHistory();
@@ -27,26 +27,28 @@ const Login = (props) => {
       <PicWrapper>
         <PicDiv/>
         <Text>
-          New to DevTracker? Sign up below
+          <div style={styles.topLetter}>New to DevTracker? Sign up below</div>
           <ButtonDiv>
-            <Link to="/register"><Button> Sign Up</Button></Link>
+            <Link to="/register"><Button color="blue"> Sign Up</Button></Link>
           </ButtonDiv>
         </Text>
       </PicWrapper>
       <div style={styles.box}>
         <h1 style={styles.topLetter}>Login to DevTracker</h1>
         <br/>
-        <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <p>{email.label}</p>
-          <input autoFocus {...email} />
+          <label>E-mail</label>
+          <input autoFocus {...email}/>
           <p>{password.label}</p>
+          <label>Password</label>
           <input type="password" {...password} />
           {authLoading ? (
-            <button disabled loading>Loading</button>
+            <Button color="blue" disabled loading>Loading</Button>
           ) : (
-            <button type="submit">login</button>
+            <Button color="blue" type="submit">login</Button>
           )}
-        </form>
+        </Form>
       </div>
     </Wrapper>
   );
@@ -62,7 +64,6 @@ const PicDiv = styled.div`
   height: 300px;
   width: 300px;
 `
-
 const PicWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -72,11 +73,9 @@ const PicWrapper = styled.div`
   height: 100vh;
   width: 40%;
 `
-
 const Text = styled.div`
   color: white;
 `
-
 const ButtonDiv = styled.div`
   display: flex;
   justify-content: center;
@@ -100,6 +99,7 @@ const styles = {
   topLetter:{
     fontSize: "40px",
     fontWeight: "bold",
+    textAlign: "center"
   }
 }
 
