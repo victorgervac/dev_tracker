@@ -43,8 +43,9 @@ const User = (props) => {
   const renderUsers = () => {
     return (
       <>
+      <div style={styles.header}>Account Setting</div>
+      <div style={styles.divBox}>
         <Form onSubmit={handleSubmit}>
-          <Form.Group widths="equal">
             <Form.Input
               label="First Name"
               placeholder="First Name"
@@ -52,7 +53,7 @@ const User = (props) => {
               required
               onChange={handleChange}
               value={formValues.first_name}
-            />
+              />
             <Form.Input
               label="Last Name"
               placeholder="Last Name"
@@ -60,33 +61,20 @@ const User = (props) => {
               required
               onChange={handleChange}
               value={formValues.last_name}
-            />
-            <br />
-            <Form.Input
+              />
+            <Form.Input 
               label="E-Mail"
               placeholder="E-Mail"
               name="email"
               required
               onChange={handleChange}
               value={formValues.email}
-            />
-            <br />
-            {/* for a latter feature will need axios call in auth*/}
-            {/* <Form.Input
-              type="password"
-              label="Password"
-              placeholder="Password"
-              name="password"
-              onChange={handleChange}
-              value={formValues.password}
-            /> */}
-            <div> 
-              <Button color="green" type="submit">
+              />
+              <Button floated color="blue" type="submit">
                 Save
-        </Button>
-            </div>
-          </Form.Group>
+              </Button>
         </Form>
+        </div>
       </>
     );
   };
@@ -97,5 +85,22 @@ const User = (props) => {
     </div>
   );
 };
+
+const styles={
+  header:{
+    backgroundColor: "#606F8C",
+    color: 'white',
+    padding: "40px",
+    fontFamily: "Arial",
+    textAlign: "center",
+    fontSize: "30px",
+  },
+  divBox:{
+    background: "#DAD7C5",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  }
+}
 
 export default User;
