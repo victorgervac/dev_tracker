@@ -15,6 +15,7 @@ const Landing = () => {
           Login
         </Button>
       </Link>
+      <span style={{ marginRight: "10px" }}></span>
       <Link to="/register" >
         <Button color="blue">
           Sign Up
@@ -28,6 +29,8 @@ const Wrapper = styled.div`
   background: black url(${devLogo}) no-repeat center;
   height: 100vh;
   text-align: right;
+  padding-top: 10px;
+  padding-right: 10px;
 `
 
 export default Landing;
