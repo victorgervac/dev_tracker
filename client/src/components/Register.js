@@ -5,6 +5,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import DevNoTextLogo from "../images/DevNoTextLogo.png"
+import {Link} from "react-router-dom";
 import ContactForm from "../Contact/ContactForm";
 
 const Register = (props) => {
@@ -79,28 +80,54 @@ const Register = (props) => {
         </Button>
         </div>
       </Form>
-      <PicDiv>
-      </PicDiv>
+      <PicWrapper>
+      <PicDiv/>
+      <Text>
+          <div style={styles.topLetter}>Do you already have an account? </div>
+          That's awesome! You can login by clicking on 
+          the button below.
+          <br/>
+          <ButtonDiv>
+            <Link to="/login"><Button color="blue"> Log in</Button></Link>
+          </ButtonDiv>
+        </Text>
+      </PicWrapper>
       </Wrapper>
     </>
   );
 };
 export default Register;
 
+const Wrapper = styled.div`
+display: flex;
+justify-content: space-between;
+`
+const PicWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: black;
+  height: 100vh;
+  width: 40%;
+`
  const PicDiv = styled.div`
  background: black url(${DevNoTextLogo}) no-repeat center;
- height: 100vh;
- width: 100vh;
+ background-size: cover;
+ height: 300px;
+ width: 300px;
  `
- const Wrapper = styled.div`
- display: flex;
- width: 1200px;
- justify-content: space-between;
- align-items: center;
+ const ButtonDiv = styled.div`
+  display: flex;
+  justify-content: center;
+ `
+ const Text = styled.div`
+  color: white;
+  text-align: center;
 `
 const styles = {
   box:{
-    margin: "125px 50px 125px 0",
+    margin: "125px 50px 0 150px",
     lineHeight: "40px",
     fontSize: "15px",
     fontWeight: "bold",

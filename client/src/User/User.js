@@ -104,7 +104,6 @@ const styles = {
   },
   button:{
     top:"15px",
-    right: "-400px",
   },
   header:{
     fontSize: "40px",
