@@ -105,50 +105,50 @@ const JobForm = ({job={}, location={}, ...props}) => {
     <div style={styles.header}>{job.id ? "Edit Job" : "Add Job"}</div>
     <Wrapper>
     <Form onSubmit={handleSubmit} status={status}>
-      <Form.Input
+      <label style={{fontWeight:"bold",color:"black"}}>Company</label>
+      <input
         name="company"
-        label="Company"
         placeholder="Company"
         value={formValues.company}
         onChange={handleChange}
         required
       />
-      <Form.Input
+      <label style={{fontWeight:"bold",color:"black"}}>Job Title</label>
+      <input
         name="job_title"
-        label="Job Title"
         placeholder="Job Title"
         value={formValues.job_title}
         onChange={handleChange}
         required
       />
-      <Form.Input
+      <label style={{fontWeight:"bold",color:"black"}}>Salary</label>
+      <input
         name="salary"
-        label="Salary"
         placeholder="Salary"
         value={formValues.salary}
         onChange={handleChange}
         required
       />
-      <Form.Input
+      <label style={{fontWeight:"bold",color:"black"}}>Location</label>
+      <input
         name="location"
-        label="Location"
         placeholder="Location"
         value={formValues.location}
         onChange={handleChange}
         required
       />
-      <Form.Input
+      <label style={{fontWeight:"bold",color:"black"}}>Date Applied</label>
+      <input
         name="date_applied"
-        label="Date Applied"
         placeholder="Date Applied"
         value={formValues.date_applied}
         type="date"
         onChange={handleChange}
         required
       />
-      <Form.Input
+      <label style={{fontWeight:"bold",color:"black"}}>Description</label>
+      <input
         name="description"
-        label="Description"
         placeholder="Description"
         value={formValues.description}
         onChange={handleChange}
@@ -181,6 +181,7 @@ const styles = {
       font: "Open Sans",
       fontSize: "20px"
   }
+  
 };
 
 const Wrapper = styled.div`

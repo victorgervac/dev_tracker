@@ -35,37 +35,37 @@ const ContactForm = ({contact={}, ...props})=> {
   return (
     <div>
       <Form onSubmit={handleSubmit}> 
-          <Form.Input
+          <label>First Name</label>
+          <input
           type="text"
           name="first_name"
-          label="First Name"
           placeholder="first name"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           required
           />
-          <Form.Input
+           <label>Last Name</label>
+          <input
           type="text"
           name="last_name"
-          label="Last Name"
           placeholder="last name"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           required
           />
-          <Form.Input
+          <label>Phone</label>
+          <input
           type="text"
           name="phone"
-          label="Phone"
           placeholder="phone"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           required
           />
-          <Form.Input
+          <label>E-mail</label>
+          <input
           type="text"
           name="email"
-          label="Email"
           placeholder="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}

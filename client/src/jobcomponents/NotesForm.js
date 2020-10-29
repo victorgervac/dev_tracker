@@ -36,7 +36,7 @@ const NotesForm = ({note={}, ...props}) => {
 return (
 <div>
     <Form onSubmit={handleSubmit}> 
-        <Form.Input
+        <input
         type="text"
         name="description"
         label="Notes"
