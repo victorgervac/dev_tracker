@@ -39,8 +39,8 @@ const Register = (props) => {
   return (
     <>
     <Wrapper >
-      <Form  onSubmit={handleSubmit}>
-        <div style={styles.box}>
+      <Form  style={styles.box}onSubmit={handleSubmit}>
+        
           <div>
         <h1 style={styles.topLetter}>Welcome to Devtracker.</h1>
         <div>Create your account by filling the form bellow.</div>
@@ -73,14 +73,13 @@ const Register = (props) => {
           <label color="#2B061E">
             Password Confirmation
           </label>
-          <input type="password"{...passwordConfirmation} />
+          <input style={{margin:" 0 0 10px 0" }} type="password"{...passwordConfirmation} />
         </div>
-        <Button color="blue" type="submit">
+        <Button  color="blue" type="submit">
           Sign Up
         </Button>
-        </div>
-      </Form>
-      <PicWrapper>
+        </Form>
+        <PicWrapper>
       <PicDiv/>
       <Text>
           <div style={styles.topLetter}>Do you already have an account? </div>
@@ -120,6 +119,7 @@ const PicWrapper = styled.div`
  const ButtonDiv = styled.div`
   display: flex;
   justify-content: center;
+  margin: 10px
  `
  const Text = styled.div`
   color: white;
@@ -135,9 +135,10 @@ const styles = {
     background: "white",
     padding: "50px",
     boxShadow: "5px 5px 5px 5px gray",
+    height: "50%"
   },
   topLetter:{
     fontSize: "40px",
     fontWeight: "bold",
-  }
+  }, 
 }

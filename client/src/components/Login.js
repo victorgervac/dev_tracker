@@ -79,6 +79,7 @@ const Text = styled.div`
 const ButtonDiv = styled.div`
   display: flex;
   justify-content: center;
+  margin: 10px
 `
 
 
