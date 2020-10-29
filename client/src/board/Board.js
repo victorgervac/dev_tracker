@@ -28,7 +28,7 @@ export default (props) => {
                status: props.state 
             }
           }}>
-            <Button as="submit" style={{width:"100%"}}><Icon name="add" size="large"/></Button>
+            <Button as="submit" style={{width:"100%", color: "#2B061E"}}><Icon name="add" size="large"/></Button>
           </Link>
           <div style={styles.panel.content}>
             {props.cards.map((note) => (

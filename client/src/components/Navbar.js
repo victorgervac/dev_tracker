@@ -39,7 +39,7 @@ const styles = {
   navbar: {
     width: "100%",
     height: "70px",
-    backgroundColor: "#2B061E",
+    backgroundColor: "#606F8C",
     padding: "10px",
     justifyContent: "space-between",
   },
