@@ -39,7 +39,6 @@ return (
         <input
         type="text"
         name="description"
-        label="Notes"
         placeholder="Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
