@@ -57,7 +57,8 @@ const Wrapper = styled.div`
   border-color: #606F8C;
   border-style: solid;
   border-radius: 5px;
-  width: 50%;
+  box-shadow: 5px 10px #606F8C;
+  width: 45%;
 `
 
 const Header = styled.div`
