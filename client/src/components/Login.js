@@ -42,7 +42,7 @@ const Login = (props) => {
           <input autoFocus {...email}/>
           <p>{password.label}</p>
           <label>Password</label>
-          <input type="password" {...password} />
+          <input style={{margin: "0px 0px 10px"}} type="password" {...password} />
           {authLoading ? (
             <Button color="blue" disabled loading>Loading</Button>
           ) : (
