@@ -29,7 +29,7 @@ const User = (props) => {
       // first_name: firstName.value, 
       // last_name: lastName.value,
        
-      history.push("/home") 
+      history
     )
   }
 
