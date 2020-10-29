@@ -34,7 +34,7 @@ const JobShow = ({match, history}) => {
   const deleteJob = async () => {
     try{
       const res = await axios.delete(`/api/users/${authContext.user.id}/jobs/${id}`);
-      history.push("/")
+      history.push("/home")
     } catch (err) {
       alert("could not delete job")
     }

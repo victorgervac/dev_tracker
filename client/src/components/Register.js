@@ -9,11 +9,11 @@ import {Link} from "react-router-dom";
 import ContactForm from "../Contact/ContactForm";
 
 const Register = (props) => {
-  const email = useFormInput("test@test.com", "E-mail");
-  const password = useFormInput("123456", "Password");
-  const passwordConfirmation = useFormInput("123456", "Password Confirmation");
-  const firstName = useFormInput("Jerry", "First Name");
-  const lastName = useFormInput("Narly", "Last Name");
+  const email = useFormInput("", "E-mail");
+  const password = useFormInput("", "Password");
+  const passwordConfirmation = useFormInput("", "Password Confirmation");
+  const firstName = useFormInput("", "First Name");
+  const lastName = useFormInput("", "Last Name");
 
   const { handleRegister, authLoading, authErrors } = useContext(AuthContext);
   const history = useHistory();
@@ -107,7 +107,7 @@ const PicWrapper = styled.div`
   align-items: center;
   justify-content: center;
   background: black;
-  height: 100vh;
+  height: calc(100vh -20px);
   width: 40%;
 `
  const PicDiv = styled.div`
@@ -127,7 +127,7 @@ const PicWrapper = styled.div`
 `
 const styles = {
   box:{
-    margin: "125px 50px 0 150px",
+    margin: "10px auto",
     lineHeight: "40px",
     fontSize: "15px",
     fontWeight: "bold",

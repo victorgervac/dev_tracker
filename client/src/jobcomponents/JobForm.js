@@ -29,7 +29,7 @@ const JobForm = ({job={}, location={}, ...props}) => {
         status: formValues.status,
       })
       .then((res) => {
-        props.history.push(`/`)
+        props.history.push(`/home`)
 
       })
       .catch(console.log)

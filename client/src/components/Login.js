@@ -12,8 +12,8 @@ const Login = (props) => {
   const { handleLogin, setUser, authLoading, authErrors } = useContext(
     AuthContext
   );
-  const email = useFormInput("test@test.com", "Email");
-  const password = useFormInput("123456", "Password");
+  const email = useFormInput("", "Email");
+  const password = useFormInput("", "Password");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
