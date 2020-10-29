@@ -54,7 +54,7 @@ const AuthProvider = (props) => {
     Axios.put(`/api/users/${id}`,user)
       .then(res=> {
         setUser(res.data)
-        history.push("/accountSettings")
+        history.push("/home")
       })
       .catch(err => {
         alert("error")

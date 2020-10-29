@@ -32,6 +32,7 @@ const ContactForm = ({contact={}, ...props})=> {
         })
     }
   }
+  
   return (
     <div>
       <Form onSubmit={handleSubmit}> 

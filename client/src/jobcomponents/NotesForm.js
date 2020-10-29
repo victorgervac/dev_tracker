@@ -35,14 +35,14 @@ const NotesForm = ({note={}, ...props}) => {
     }
 return (
 <div>
-    <Form onSubmit={handleSubmit}> 
-        <input
-        type="text"
-        name="description"
-        placeholder="Description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        required
+    <Form onSubmit={handleSubmit}>
+        <input 
+            type="text"
+            name="description"
+            placeholder="Description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
         />
          <Button type='submit'>Save</Button>
     </Form>

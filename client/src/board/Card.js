@@ -13,7 +13,7 @@ const Card = ({opacity=1, job_title, company, id}) => {
       borderRadius: "15px",
       marginBottom: 0,
     }}>
-      <div style={{ padding: "8px", color: "white", backgroundColor: "#606F8C" }}>
+      <div style={{ padding: "8px", color: "white", backgroundColor: "#6E54A3" }}>
         <p style={{ fontSize: "12px", fontWeight: 700 }}>{job_title}</p> 
         <p style={{ fontSize: "8px", fontWeight: 300 }}>{company}</p>
       </div>
