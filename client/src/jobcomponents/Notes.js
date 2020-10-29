@@ -58,6 +58,7 @@ const Wrapper = styled.div`
   border-radius: 5px;
   box-shadow: 5px 10px #606F8C;
   width: 45%;
+  padding:10px;
 `
 
 const Header = styled.div`
