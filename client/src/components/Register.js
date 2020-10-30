@@ -98,9 +98,9 @@ const Register = (props) => {
 export default Register;
 
 const Wrapper = styled.div`
-display: flex;
-justify-content: space-between;
-`
+  display: flex;
+  justify-content: space-between;
+  `
 const PicWrapper = styled.div`
   display: flex;
   flex-direction: column;
